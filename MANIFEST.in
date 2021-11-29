@@ -1,0 +1,18 @@
+include MANIFEST.in
+include requirements.txt
+include *.json
+include *.md
+include *.py
+include *.txt
+recursive-include robinhood *.css
+recursive-include robinhood *.csv
+recursive-include robinhood *.html
+recursive-include robinhood *.ico
+recursive-include robinhood *.js
+recursive-include robinhood *.json
+recursive-include robinhood *.md
+recursive-include robinhood *.png
+recursive-include robinhood *.py
+recursive-include robinhood *.svg
+recursive-include robinhood *.txt
+recursive-exclude robinhood *.pyc
