@@ -1,0 +1,16 @@
+[
+ {
+  "docstatus": 0,
+  "doctype": "Web Template",
+  "fields": [],
+  "modified": "2021-11-30 08:32:19.685484",
+  "module": "Robinhood",
+  "name": "Heat-Map",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "standard": 1,
+  "template": "",
+  "type": "Section"
+ }
+]

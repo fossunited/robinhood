@@ -182,3 +182,30 @@ app_license = "MIT"
 # 	"robinhood.auth.validate"
 # ]
 
+fixtures = [
+    {
+        "dt": "Web Page",
+        "filters": [
+            [
+                "module",
+                "in",
+                ("Robinhood")
+            ]
+        ]
+    },
+    {
+        "dt": "Web Template",
+        "filters": [
+            [
+                "module",
+                "in",
+                (
+                    "Robinhood"
+                )
+            ]
+        ]
+    }
+    # "Property Setter",
+    # "Custom Script",
+    # "Role"
+]
