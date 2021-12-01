@@ -1,0 +1,67 @@
+{
+ "actions": [],
+ "autoname": "format:{parent_chapter}-{sub_chapter_name}",
+ "creation": "2021-11-30 18:48:06.013129",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "parent_chapter",
+  "city_name",
+  "country",
+  "sub_chapter_name"
+ ],
+ "fields": [
+  {
+   "fieldname": "parent_chapter",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Parent Chapter",
+   "options": "Robinhood Chapter",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "parent_chapter.country",
+   "fieldname": "country",
+   "fieldtype": "Link",
+   "label": "Country",
+   "options": "Country"
+  },
+  {
+   "fieldname": "sub_chapter_name",
+   "fieldtype": "Data",
+   "label": "Sub Chapter Name"
+  },
+  {
+   "fieldname": "city_name",
+   "fieldtype": "Link",
+   "label": "City Name",
+   "options": "City",
+   "reqd": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2021-11-30 18:52:22.988010",
+ "modified_by": "Administrator",
+ "module": "Robinhood",
+ "name": "Robinhood Sub Chapter",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

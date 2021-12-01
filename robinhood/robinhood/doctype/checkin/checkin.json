@@ -8,7 +8,7 @@
  "field_order": [
   "user",
   "selfie",
-  "location",
+  "sub_chapter",
   "meals_served",
   "tags"
  ],
@@ -25,11 +25,6 @@
    "label": "Selfie"
   },
   {
-   "fieldname": "location",
-   "fieldtype": "Data",
-   "label": "Location"
-  },
-  {
    "fieldname": "meals_served",
    "fieldtype": "Int",
    "label": "Meals Served"
@@ -39,11 +34,17 @@
    "fieldtype": "Table",
    "label": "Tags",
    "options": "Tag Users"
+  },
+  {
+   "fieldname": "sub_chapter",
+   "fieldtype": "Link",
+   "label": "Sub Chapter",
+   "options": "Robinhood Sub Chapter"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2021-11-29 19:58:47.744251",
+ "modified": "2021-11-30 19:05:01.147548",
  "modified_by": "Administrator",
  "module": "Robinhood",
  "name": "Checkin",
