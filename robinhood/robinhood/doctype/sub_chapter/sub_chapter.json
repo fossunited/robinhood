@@ -7,9 +7,9 @@
  "engine": "InnoDB",
  "field_order": [
   "parent_chapter",
+  "sub_chapter_name",
   "city_name",
-  "country",
-  "sub_chapter_name"
+  "country"
  ],
  "fields": [
   {
@@ -17,7 +17,7 @@
    "fieldtype": "Link",
    "in_list_view": 1,
    "label": "Parent Chapter",
-   "options": "Robinhood Chapter",
+   "options": "Chapter",
    "reqd": 1
   },
   {
@@ -42,10 +42,10 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2021-11-30 18:52:22.988010",
+ "modified": "2021-12-01 18:25:56.877520",
  "modified_by": "Administrator",
  "module": "Robinhood",
- "name": "Robinhood Sub Chapter",
+ "name": "Sub Chapter",
  "owner": "Administrator",
  "permissions": [
   {

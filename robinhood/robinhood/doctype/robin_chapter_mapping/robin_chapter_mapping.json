@@ -1,41 +1,41 @@
 {
  "actions": [],
- "autoname": "field:chapter_name",
- "creation": "2021-11-30 18:43:06.681537",
+ "creation": "2021-12-01 18:27:32.005659",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "chapter_name",
-  "country",
-  "city"
+  "user",
+  "sub_chapter",
+  "chapter"
  ],
  "fields": [
   {
-   "fieldname": "chapter_name",
+   "fieldname": "user",
+   "fieldtype": "Link",
+   "label": "User",
+   "options": "User"
+  },
+  {
+   "fieldname": "sub_chapter",
+   "fieldtype": "Link",
+   "label": "Sub Chapter",
+   "options": "Sub Chapter"
+  },
+  {
+   "fetch_from": "sub_chapter.parent_chapter",
+   "fieldname": "chapter",
    "fieldtype": "Data",
-   "label": "Chapter Name",
-   "unique": 1
-  },
-  {
-   "fieldname": "country",
-   "fieldtype": "Link",
-   "label": "Country",
-   "options": "Country"
-  },
-  {
-   "fieldname": "city",
-   "fieldtype": "Link",
-   "label": "City",
-   "options": "City"
+   "label": "Chapter",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2021-11-30 18:43:57.925775",
+ "modified": "2021-12-01 18:27:32.005659",
  "modified_by": "Administrator",
  "module": "Robinhood",
- "name": "Robinhood Chapter",
+ "name": "Robin Chapter Mapping",
  "owner": "Administrator",
  "permissions": [
   {

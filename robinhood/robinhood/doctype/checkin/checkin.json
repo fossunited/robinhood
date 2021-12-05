@@ -36,15 +36,16 @@
    "options": "Tag Users"
   },
   {
+   "fetch_from": "sub_chapter.sub_chapter",
    "fieldname": "sub_chapter",
    "fieldtype": "Link",
    "label": "Sub Chapter",
-   "options": "Robinhood Sub Chapter"
+   "options": "Robin Chapter Mapping"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2021-11-30 19:05:01.147548",
+ "modified": "2021-12-01 21:32:33.964863",
  "modified_by": "Administrator",
  "module": "Robinhood",
  "name": "Checkin",

@@ -4,5 +4,5 @@
 # import frappe
 import unittest
 
-class TestRobinhoodSubChapter(unittest.TestCase):
+class TestRobinChapterMapping(unittest.TestCase):
 	pass

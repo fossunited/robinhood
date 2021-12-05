@@ -20,11 +20,12 @@
   },
   {
    "fieldname": "city",
-   "fieldtype": "Data",
+   "fieldtype": "Link",
    "in_list_view": 1,
    "in_preview": 1,
    "in_standard_filter": 1,
-   "label": "City"
+   "label": "City",
+   "options": "City"
   },
   {
    "fieldname": "country",
@@ -38,12 +39,11 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2021-11-30 14:33:31.114230",
+ "modified": "2021-12-01 18:24:17.785535",
  "modified_by": "Administrator",
  "module": "Robinhood",
  "name": "Chapter",
  "name_case": "Title Case",
- "naming_rule": "By fieldname",
  "owner": "Administrator",
  "permissions": [
   {
