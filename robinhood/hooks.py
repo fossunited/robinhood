@@ -98,7 +98,7 @@ app_license = "MIT"
 # ---------------
 # Hook on document methods and events
 
-# doc_events = {"Checkin": {"after_insert": "method", }}
+# doc_events = {"Checkin": {"after_insert": "method", ""}}
 
 # Scheduled Tasks
 # ---------------
@@ -177,9 +177,12 @@ app_license = "MIT"
 # ]
 
 fixtures = [
-    {"dt": "Web Page", "filters": [["module", "in", ("Robinhood")]]},
+    "Web Page",
+    # "Web Template",
+    # "Web Form"
+    # {"dt": "Web Page", "filters": [["module", "in", ("Robinhood")]]},
     {"dt": "Web Template", "filters": [["module", "in", ("Robinhood")]]},
-    {"dt": "Web Form", "filters": [["module", "in", ("Robinhood")]]}
+    # {"dt": "Web Form", "filters": [["module", "in", ("Robinhood")]]}
     # "Property Setter",
     # "Custom Script",
     # "Role"

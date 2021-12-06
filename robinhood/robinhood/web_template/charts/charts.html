@@ -1,0 +1,65 @@
+<script>
+  if (window.location.pathname.includes("chapter")) {
+    fetch(
+      "/api/method/robinhood.robinhood.chapter.chapter.fetch_chapter_checkins"
+    )
+      .then((r) => r.json())
+      .then((r) => {
+        if (r.message) {
+          let labels = r.message.map((item) => item.parent_chapter);
+          let checkin_counts = r.message.map((item) => item.checkin_count);
+          const data = {
+            labels: labels,
+            datasets: [
+              {
+                name: "Checkin Count",
+                type: "bar",
+                values: checkin_counts,
+              },
+            ],
+          };
+
+          const chart = new Chart.Chart("#chart", {
+            title: "Chapters",
+            data: data,
+            type: "bar",
+            height: 250,
+            colors: ["#7cd6fd", "#743ee2"],
+          });
+        }
+      });
+  } else {
+    //  Home page
+    fetch(
+      "/api/method/robinhood.robinhood.chapter.chapter.fetch_top_chapter_checkins"
+    )
+      .then((r) => r.json())
+      .then((r) => {
+        if (r.message) {
+          let labels = r.message.map((item) => item.parent_chapter);
+          let checkin_counts = r.message.map((item) => item.checkin_count);
+          labels.sort().reverse();
+          checkin_counts.sort().reverse();
+          const data = {
+            labels: labels,
+            datasets: [
+              {
+                name: "Checkin Count",
+                type: "bar",
+                values: checkin_counts,
+              },
+            ],
+          };
+
+          const chart = new Chart.Chart("#chart", {
+            title: "Top Chapters of the week",
+            data: data,
+            type: "bar",
+            height: 250,
+            colors: ["#743ee2"],
+          });
+        }
+      });
+  }
+</script>
+<div id="chart"></div>
