@@ -44,7 +44,7 @@ app_license = "MIT"
 
 # website user home page (by Role)
 # role_home_page = {
-# 	"Role": "home_page"
+#	"Role": "home_page"
 # }
 
 # Generators
@@ -98,7 +98,13 @@ app_license = "MIT"
 # ---------------
 # Hook on document methods and events
 
-# doc_events = {"Checkin": {"after_insert": "method", ""}}
+# doc_events = {
+# 	"*": {
+# 		"on_update": "method",
+# 		"on_cancel": "method",
+# 		"on_trash": "method"
+#	}
+# }
 
 # Scheduled Tasks
 # ---------------
@@ -177,12 +183,41 @@ app_license = "MIT"
 # ]
 
 fixtures = [
-    "Web Page",
-    # "Web Template",
-    # "Web Form"
-    # {"dt": "Web Page", "filters": [["module", "in", ("Robinhood")]]},
-    {"dt": "Web Template", "filters": [["module", "in", ("Robinhood")]]},
-    # {"dt": "Web Form", "filters": [["module", "in", ("Robinhood")]]}
+    {
+        "dt": "Web Page",
+        "filters": [
+            [
+                "module",
+                "in",
+                ("Robinhood")
+            ]
+        ]
+    },
+    {
+        "dt": "Web Template",
+        "filters": [
+            [
+                "module",
+                "in",
+                (
+                    "Robinhood"
+                )
+            ]
+        ]
+    },
+    {
+        "dt": "Web Form",
+        "filters": [
+            [
+                "module",
+                "in",
+                (
+                    "Robinhood"
+                )
+            ]
+        ]
+    }
+
     # "Property Setter",
     # "Custom Script",
     # "Role"
