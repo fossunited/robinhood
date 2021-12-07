@@ -1,49 +1,51 @@
 {
  "actions": [],
- "allow_rename": 1,
- "autoname": "field:chapter_name",
- "creation": "2021-11-30 14:31:09.168695",
+ "autoname": "format:{parent_chapter}-{sub_chapter_name}",
+ "creation": "2021-11-30 18:48:06.013129",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "chapter_name",
-  "city",
+  "parent_chapter",
+  "sub_chapter_name",
+  "city_name",
   "country"
  ],
  "fields": [
   {
-   "fieldname": "chapter_name",
-   "fieldtype": "Data",
-   "label": "Chapter name",
-   "unique": 1
-  },
-  {
-   "fieldname": "city",
+   "fieldname": "parent_chapter",
    "fieldtype": "Link",
    "in_list_view": 1,
-   "in_preview": 1,
-   "in_standard_filter": 1,
-   "label": "City",
-   "options": "City"
+   "label": "Parent Chapter",
+   "options": "Chapter",
+   "reqd": 1
   },
   {
+   "fetch_from": "parent_chapter.country",
    "fieldname": "country",
    "fieldtype": "Link",
-   "in_list_view": 1,
-   "in_preview": 1,
-   "in_standard_filter": 1,
    "label": "Country",
    "options": "Country"
+  },
+  {
+   "fieldname": "sub_chapter_name",
+   "fieldtype": "Data",
+   "label": "Sub Chapter Name"
+  },
+  {
+   "fieldname": "city_name",
+   "fieldtype": "Link",
+   "label": "City Name",
+   "options": "City",
+   "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2021-12-01 18:24:17.785535",
+ "modified": "2021-12-01 18:25:56.877520",
  "modified_by": "Administrator",
  "module": "Robinhood",
- "name": "Chapter",
- "name_case": "Title Case",
+ "name": "Sub Chapter",
  "owner": "Administrator",
  "permissions": [
   {

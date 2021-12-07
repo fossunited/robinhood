@@ -2,6 +2,32 @@
  {
   "docstatus": 0,
   "doctype": "Web Template",
+  "fields": [
+   {
+    "default": null,
+    "fieldname": "ddd",
+    "fieldtype": "Data",
+    "label": "ddd",
+    "options": null,
+    "parent": "charts",
+    "parentfield": "fields",
+    "parenttype": "Web Template",
+    "reqd": 0
+   }
+  ],
+  "modified": "2021-12-05 12:55:36.725712",
+  "module": "Robinhood",
+  "name": "charts",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "standard": 1,
+  "template": "",
+  "type": "Section"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Web Template",
   "fields": [],
   "modified": "2021-12-06 11:36:24.793838",
   "module": "Robinhood",
