@@ -5,7 +5,7 @@
 import frappe
 from frappe.model.document import Document
 from frappe.utils.background_jobs import enqueue
-from pdf_text_overlay import pdf_from_template
+# from pdf_text_overlay import pdf_from_template
 
 
 class Checkin(Document):
@@ -53,14 +53,14 @@ class Checkin(Document):
             """
         SELECT COUNT(*) AS count
         FROM `tabCheckin`
-        WHERE user=%s 
+        WHERE user=%s
         GROUP BY user
         HAVING COUNT(*)>%s
         """,
             [self.user, 20],
             as_dict=True,
         )
-        if res[0]["count"]:
+        if res and res[0]["count"]:
             enqueue(self.generate_certificate)
 
 

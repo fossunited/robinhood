@@ -11,10 +11,10 @@ def fetch_chapter_checkins():
     """
     return frappe.db.sql(
         """
-        SELECT sc.parent_chapter, c.sub_chapter, COUNT(*) AS checkin_count 
-        FROM `tabCheckin` c 
-        JOIN `tabSub Chapter` sc ON c.sub_chapter=sc.name 
-        GROUP BY sub_chapter; 
+        SELECT sc.parent_chapter, c.sub_chapter, COUNT(*) AS checkin_count
+        FROM `tabCheckin` c
+        JOIN `tabSub Chapter` sc ON c.sub_chapter=sc.name
+        GROUP BY sc.parent_chapter, c.sub_chapter
     """,
         as_dict=True,
     )
@@ -27,11 +27,11 @@ def fetch_top_chapter_checkins():
     """
     re = frappe.db.sql(
         """
-        SELECT sc.parent_chapter, c.sub_chapter, COUNT(*) AS checkin_count 
-        FROM `tabCheckin` c 
-        JOIN `tabSub Chapter` sc ON c.sub_chapter=sc.name 
+        SELECT sc.parent_chapter, c.sub_chapter, COUNT(*) AS checkin_count
+        FROM `tabCheckin` c
+        JOIN `tabSub Chapter` sc ON c.sub_chapter=sc.name
         WHERE c.creation BETWEEN %s AND %s
-        GROUP BY sub_chapter; 
+        GROUP BY sc.parent_chapter, c.sub_chapter
     """,
         [
             str(get_first_day_of_week(date.today())),
