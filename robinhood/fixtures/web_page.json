@@ -20,7 +20,7 @@
   "meta_description": null,
   "meta_image": null,
   "meta_title": null,
-  "modified": "2021-12-07 11:16:36.649002",
+  "modified": "2021-12-22 09:02:17.099457",
   "module": "Robinhood",
   "name": "recent-checkins",
   "page_blocks": [
@@ -34,7 +34,7 @@
     "parent": "recent-checkins",
     "parentfield": "page_blocks",
     "parenttype": "Web Page",
-    "web_template": "Home",
+    "web_template": "Top City",
     "web_template_values": null
    },
    {
@@ -60,7 +60,7 @@
     "parent": "recent-checkins",
     "parentfield": "page_blocks",
     "parenttype": "Web Page",
-    "web_template": "Heat-Map",
+    "web_template": "Top sub-chapters",
     "web_template_values": null
    }
   ],

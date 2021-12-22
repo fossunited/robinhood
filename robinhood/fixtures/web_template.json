@@ -29,14 +29,14 @@
   "docstatus": 0,
   "doctype": "Web Template",
   "fields": [],
-  "modified": "2021-12-06 11:36:24.793838",
+  "modified": "2021-12-22 09:36:35.020980",
   "module": "Robinhood",
   "name": "Recent checkins",
   "parent": null,
   "parentfield": null,
   "parenttype": null,
   "standard": 0,
-  "template": "{% set jobs = frappe.get_all(\"Checkin\", [\"name\", \"selfie\", \"creation\", \"owner\", \"location\", \"meals_served\"], order_by=\"creation desc\", limit_page_length=10) %}\n\n\n    <h1> Recent checkins</h1>\n<div class=\"job-listing\" style=\"max-width: 640px;\">\n\n    {% for job in jobs %}\n    <div class=\"job-details\" style=\"position: relative;\">\n\t    <h4>{{ job.owner }}</h4>\n\t   \n\t        <div>\n                \n\n    \t        <div class='small text-muted mt-3 float-right'>{{ frappe.utils.global_date_format(job.creation) }}</div>\n    \t        <span><img src={{job.selfie}} alt=\"Italian Trulli\"> </span>\n    \t        <span class=\"badge badge-info\">{{ job.location }}</span>\n    \t        <span class=\"badge badge-info\">{{ job.meals_served }}</span>\n    \t        \t       \n\n    \t   </div>\n    </div>\n    {% endfor %}\n</div>",
+  "template": "{% set checkins = frappe.get_all(\"Checkin\", [\"name\", \"selfie\", \"creation\", \"owner\", \"location\", \"meals_served\"], order_by=\"creation desc\", limit_page_length=10) %}\n\n\n    <span style=\"\n    font-size: 25px;\n    font-weight: bold;\n\">Top Robins</span>\n    <div>The Robin Hood Army is a volunteer-based Zero funds organization that works to get surplus food from restaurants to the less fortunate sections of society in cities across India and 14 other countries</div>\n\n\n<table>\n        <tr>\n            <th></th>\n            <th>Name</th>\n            <th>Sub-Chapter</th>\n            <th>Drives</th>\n        </tr>\n        {% for checkin in checkins %}\n            <tr>\n                <td class='text-center'><span><img src={{checkin.selfie}} alt=\"Italian Trulli\"> </span></td>\n                <td class='border-bottom'>{{ checkin.owner }}</td>\n                <td class='border-bottom'> {{ checkin.location }} </td>\n                <td class='border-bottom'>{{ checkin.meals_served }}</td>\n            </tr>\n        {% endfor %}\n    </table>\n    ",
   "type": "Section"
  },
  {
@@ -65,6 +65,34 @@
   "parenttype": null,
   "standard": 1,
   "template": "",
+  "type": "Section"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Web Template",
+  "fields": [],
+  "modified": "2021-12-22 09:34:28.279847",
+  "module": "Robinhood",
+  "name": "Top City",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "standard": 0,
+  "template": "<div>\n    <span style=\"\n    font-size: 25px;\n    font-weight: bold;\n\">Banglore</span>\n    Karnataka\n</div>\n<hr>\n\n<div class=\"row\">\n    <div class=\"col-md-2\">\n        Ranking\n    </div>\n    <div class=\"col-md-2\">\n        Total drives\n    </div>\n    <div class=\"col-md-2\">\n        Sub-chapters\n    </div>\n    <div class=\"col-md-2\">\n        Robins\n    </div>\n    <div class=\"col-md-2\">\n        Average drives\n    </div>\n</div>\n\n<div class=\"row\">\n    <div class=\"col-md-2\">\n        1\n    </div>\n    <div class=\"col-md-2\">\n        123456\n    </div>\n    <div class=\"col-md-2\">\n        456\n    </div>\n     <div class=\"col-md-2\">\n        12,456\n    </div>\n    <div class=\"col-md-2\">\n        356/week\n    </div>\n</div>\n\n<hr>",
+  "type": "Section"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Web Template",
+  "fields": [],
+  "modified": "2021-12-22 09:35:55.065276",
+  "module": "Robinhood",
+  "name": "Top sub-chapters",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "standard": 0,
+  "template": "<div>\n    <span style=\"\n    font-size: 25px;\n    font-weight: bold;\n\">Top Sub-chapters</span>\n    <div class=\"dheight\">\n        The Robin Hood Army is a volunteer-based Zero funds organization that works to get surplus food from restaurants\n    </div>\n</div>\n<div class=\"row dheight\">\n    <div class=\"col-md-6\">\n        <div class=\"row dheight\">\n            <div class=\"col-md-3\">\n                1. Jp Nagar\n            </div>\n            <div class=\"col-md-9\">\n                <div style='background-color:green;width:70%;height: 5px;border-radius: 3px;'></div>\n                <div>123455</div>\n            </div>\n        </div>\n    </div>\n    <div class=\"col-md-6\">\n        <div class=\"row dheight\">\n            <div class=\"col-md-3\">\n                2. BTM\n            </div>\n            <div class=\"col-md-9\">\n                <div style='background-color:green;width:50%;height: 5px;border-radius: 3px;'></div>\n                <div>20000</div>\n            </div>\n        </div>\n    </div>\n\n    <div class=\"col-md-6\">\n        <div class=\"row dheight\">\n            <div class=\"col-md-3\">\n                3. Whitefield\n            </div>\n            <div class=\"col-md-9\">\n                <div style='background-color:green;width:20%;height: 5px;border-radius: 3px;'></div>\n                <div>56755</div>\n            </div>\n        </div>\n    </div>\n    <div class=\"col-md-6\">\n        <div class=\"row dheight\">\n            <div class=\"col-md-3\">\n                4. Madiwala\n            </div>\n            <div class=\"col-md-9\">\n                <div style='background-color:green;width:100%;height: 5px;border-radius: 3px;'></div>\n                <div>1200303</div>\n            </div>\n        </div>\n    </div>\n</div>",
   "type": "Section"
  }
 ]
