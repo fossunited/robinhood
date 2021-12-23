@@ -18,7 +18,8 @@ app_license = "MIT"
 
 # include js, css files in header of web template
 # web_include_css = "/assets/robinhood/css/robinhood.css"
-# web_include_js = "/assets/robinhood/js/robinhood.js"
+web_include_js = "/assets/robinhood/js/robinhood.js"
+
 
 # include custom scss in every website theme (without file extension ".scss")
 # website_theme_scss = "robinhood/public/scss/website"

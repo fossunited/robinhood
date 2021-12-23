@@ -2,6 +2,20 @@
  {
   "docstatus": 0,
   "doctype": "Web Template",
+  "fields": [],
+  "modified": "2021-12-22 16:38:33.510257",
+  "module": "Robinhood",
+  "name": "Top cities",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "standard": 0,
+  "template": "<div>\n    <span style=\"\n    font-size: 25px;\n    font-weight: bold;\n\">Top cities</span>\n    <div class=\"dheight\">\n        The Robin Hood Army is a volunteer-based Zero funds organization that works to get surplus food from restaurants\n    </div>\n</div>\n<div class=\"row dheight\">\n    <div class=\"col-md-6\">\n        <div class=\"row dheight\">\n            <div class=\"col-md-3\">\n                1. Jp Nagar\n            </div>\n            <div class=\"col-md-9\">\n                <div style='background-color:green;width:70%;height: 5px;border-radius: 3px;'></div>\n                <div>123455</div>\n            </div>\n        </div>\n    </div>\n    <div class=\"col-md-6\">\n        <div class=\"row dheight\">\n            <div class=\"col-md-3\">\n                2. BTM\n            </div>\n            <div class=\"col-md-9\">\n                <div style='background-color:green;width:50%;height: 5px;border-radius: 3px;'></div>\n                <div>20000</div>\n            </div>\n        </div>\n    </div>\n\n    <div class=\"col-md-6\">\n        <div class=\"row dheight\">\n            <div class=\"col-md-3\">\n                3. Whitefield\n            </div>\n            <div class=\"col-md-9\">\n                <div style='background-color:green;width:20%;height: 5px;border-radius: 3px;'></div>\n                <div>56755</div>\n            </div>\n        </div>\n    </div>\n    <div class=\"col-md-6\">\n        <div class=\"row dheight\">\n            <div class=\"col-md-3\">\n                4. Madiwala\n            </div>\n            <div class=\"col-md-9\">\n                <div style='background-color:green;width:100%;height: 5px;border-radius: 3px;'></div>\n                <div>1200303</div>\n            </div>\n        </div>\n    </div>\n</div>",
+  "type": "Section"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Web Template",
   "fields": [
    {
     "default": null,

@@ -20,7 +20,7 @@
   "meta_description": null,
   "meta_image": null,
   "meta_title": null,
-  "modified": "2021-12-22 09:02:17.099457",
+  "modified": "2021-12-23 15:31:14.558049",
   "module": "Robinhood",
   "name": "recent-checkins",
   "page_blocks": [
@@ -47,7 +47,7 @@
     "parent": "recent-checkins",
     "parentfield": "page_blocks",
     "parenttype": "Web Page",
-    "web_template": "Recent checkins",
+    "web_template": "Top sub-chapters",
     "web_template_values": null
    },
    {
@@ -60,7 +60,7 @@
     "parent": "recent-checkins",
     "parentfield": "page_blocks",
     "parenttype": "Web Page",
-    "web_template": "Top sub-chapters",
+    "web_template": "Recent checkins",
     "web_template_values": null
    }
   ],
@@ -150,7 +150,7 @@
   "meta_description": null,
   "meta_image": null,
   "meta_title": null,
-  "modified": "2021-12-07 11:16:46.042769",
+  "modified": "2021-12-23 15:31:44.318441",
   "module": "Robinhood",
   "name": "homepage",
   "page_blocks": [
@@ -166,13 +166,52 @@
     "parenttype": "Web Page",
     "web_template": "charts",
     "web_template_values": null
+   },
+   {
+    "add_bottom_padding": 1,
+    "add_container": 1,
+    "add_shade": 0,
+    "add_top_padding": 1,
+    "css_class": null,
+    "hide_block": 0,
+    "parent": "homepage",
+    "parentfield": "page_blocks",
+    "parenttype": "Web Page",
+    "web_template": "Top cities",
+    "web_template_values": null
+   },
+   {
+    "add_bottom_padding": 1,
+    "add_container": 1,
+    "add_shade": 0,
+    "add_top_padding": 1,
+    "css_class": null,
+    "hide_block": 0,
+    "parent": "homepage",
+    "parentfield": "page_blocks",
+    "parenttype": "Web Page",
+    "web_template": "Top sub-chapters",
+    "web_template_values": null
+   },
+   {
+    "add_bottom_padding": 1,
+    "add_container": 1,
+    "add_shade": 0,
+    "add_top_padding": 1,
+    "css_class": null,
+    "hide_block": 0,
+    "parent": "homepage",
+    "parentfield": "page_blocks",
+    "parenttype": "Web Page",
+    "web_template": "Recent checkins",
+    "web_template_values": null
    }
   ],
   "parent": null,
   "parentfield": null,
   "parenttype": null,
   "published": 1,
-  "route": "homepage",
+  "route": "home",
   "show_sidebar": 0,
   "show_title": 0,
   "slideshow": null,

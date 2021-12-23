@@ -1,6 +1,6 @@
 {
  "__islocal": true,
- "creation": "2021-12-07 10:48:36.558706",
+ "creation": "2021-12-23 12:52:58.533716",
  "docstatus": 0,
  "doctype": "Web Template",
  "fields": [
@@ -13,7 +13,7 @@
   }
  ],
  "idx": 0,
- "modified": "2021-12-07 10:48:36.558706",
+ "modified": "2021-12-23 12:52:58.533716",
  "modified_by": "Administrator",
  "module": "Robinhood",
  "name": "charts",
