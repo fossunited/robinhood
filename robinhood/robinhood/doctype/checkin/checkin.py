@@ -83,7 +83,7 @@ def checkins(city):
                 ON c.chapter = r.name
             INNER JOIN "tabChapter" as cp
                 ON r.chapter = cp.name
-            WHERE c.creation >= now() - INTERVAL '30 days'
+            WHERE c.creation >= now() - INTERVAL 30 day
                 and cp.city = %(city)s
             group by date(c.creation)  order by date(c.creation)
 
@@ -91,7 +91,7 @@ def checkins(city):
     else:
         query = """SELECT sum(meals_served), date(creation)
             from "tabCheckin"
-            WHERE creation >= now() - INTERVAL '30 days'
+            WHERE creation >= now() - INTERVAL 30 day
             group by date(creation) order by date(creation)"""
 
     data = frappe.db.sql(query, {"city": city}, as_list=True)
@@ -113,7 +113,7 @@ def top_robins(city):
                 ON c.chapter = r.name
             INNER JOIN "tabChapter" as cp
                 ON r.chapter = cp.name
-            WHERE c.creation >= now() - INTERVAL '30 days'
+            WHERE c.creation >= now() - INTERVAL 30 DAY
                 and cp.city = %(city)s
             order by date(c.creation)""", {"city": city}
     )
