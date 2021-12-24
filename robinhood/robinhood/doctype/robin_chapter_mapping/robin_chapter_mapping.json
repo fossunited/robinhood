@@ -1,12 +1,12 @@
 {
  "actions": [],
+ "autoname": "format: {chapter} - {#}",
  "creation": "2021-12-01 18:27:32.005659",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
   "user",
-  "sub_chapter",
   "chapter"
  ],
  "fields": [
@@ -17,25 +17,22 @@
    "options": "User"
   },
   {
-   "fieldname": "sub_chapter",
-   "fieldtype": "Link",
-   "label": "Sub Chapter",
-   "options": "Sub Chapter"
-  },
-  {
    "fetch_from": "sub_chapter.parent_chapter",
    "fieldname": "chapter",
-   "fieldtype": "Data",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
    "label": "Chapter",
-   "read_only": 1
+   "options": "Chapter"
   }
  ],
- "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2021-12-01 18:27:32.005659",
+ "modified": "2021-12-24 11:46:26.685949",
  "modified_by": "Administrator",
  "module": "Robinhood",
  "name": "Robin Chapter Mapping",
+ "naming_rule": "Expression",
  "owner": "Administrator",
  "permissions": [
   {
@@ -51,7 +48,10 @@
    "write": 1
   }
  ],
+ "route": "mapping",
+ "search_fields": "chapter",
  "sort_field": "modified",
  "sort_order": "DESC",
+ "title_field": "chapter",
  "track_changes": 1
 }

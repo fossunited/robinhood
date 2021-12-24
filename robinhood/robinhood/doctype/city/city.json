@@ -6,7 +6,8 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "city_name"
+  "city_name",
+  "state"
  ],
  "fields": [
   {
@@ -16,14 +17,21 @@
    "label": "City Name",
    "reqd": 1,
    "unique": 1
+  },
+  {
+   "fieldname": "state",
+   "fieldtype": "Data",
+   "label": "State",
+   "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2021-11-30 18:41:18.500018",
+ "modified": "2021-12-23 16:21:09.812223",
  "modified_by": "Administrator",
  "module": "Robinhood",
  "name": "City",
+ "naming_rule": "By fieldname",
  "owner": "Administrator",
  "permissions": [
   {

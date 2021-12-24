@@ -8,16 +8,17 @@
  "field_order": [
   "user",
   "selfie",
-  "sub_chapter",
   "meals_served",
-  "tags"
+  "tags",
+  "chapter"
  ],
  "fields": [
   {
    "fieldname": "user",
    "fieldtype": "Link",
    "label": "User",
-   "options": "User"
+   "options": "User",
+   "read_only": 1
   },
   {
    "fieldname": "selfie",
@@ -36,16 +37,15 @@
    "options": "Tag Users"
   },
   {
-   "fetch_from": "sub_chapter.sub_chapter",
-   "fieldname": "sub_chapter",
+   "fieldname": "chapter",
    "fieldtype": "Link",
-   "label": "Sub Chapter",
+   "label": "Chapter",
    "options": "Robin Chapter Mapping"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2021-12-01 21:32:33.964863",
+ "modified": "2021-12-24 11:26:57.509127",
  "modified_by": "Administrator",
  "module": "Robinhood",
  "name": "Checkin",
