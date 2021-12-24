@@ -78,10 +78,10 @@ def checkins(city):
     """Checkins."""
     if city:
         query = """SELECT sum(c.meals_served), date(c.creation)
-            from "tabCheckin" c
-            INNER JOIN "tabRobin Chapter Mapping" as r
+            from `tabCheckin` c
+            INNER JOIN `tabRobin Chapter Mapping` as r
                 ON c.chapter = r.name
-            INNER JOIN "tabChapter" as cp
+            INNER JOIN `tabChapter` as cp
                 ON r.chapter = cp.name
             WHERE c.creation >= now() - INTERVAL 30 day
                 and cp.city = %(city)s
@@ -90,7 +90,7 @@ def checkins(city):
         """
     else:
         query = """SELECT sum(meals_served), date(creation)
-            from "tabCheckin"
+            from `tabCheckin`
             WHERE creation >= now() - INTERVAL 30 day
             group by date(creation) order by date(creation)"""
 
@@ -108,10 +108,10 @@ def checkins(city):
 def top_robins(city):
     """Top ronins."""
     return frappe.db.sql("""SELECT c.name, c.selfie, c.creation, c.location, c.meals_served
-            from "tabCheckin" c
-            INNER JOIN "tabRobin Chapter Mapping" as r
+            from `tabCheckin` c
+            INNER JOIN `tabRobin Chapter Mapping` as r
                 ON c.chapter = r.name
-            INNER JOIN "tabChapter" as cp
+            INNER JOIN `tabChapter` as cp
                 ON r.chapter = cp.name
             WHERE c.creation >= now() - INTERVAL 30 DAY
                 and cp.city = %(city)s
