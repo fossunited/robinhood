@@ -1,9 +1,12 @@
-from . import __version__ as app_version
+"""Hooks."""
+# from . import __version__ as app_version
 
 app_name = "robinhood"
 app_title = "Robinhood"
 app_publisher = "zerodha"
-app_description = "The Robin Hood Army is a volunteer-based Zero funds organization that works to get surplus food from restaurants to the less fortunate sections of society in cities across India and 14 other countries."
+app_description = "The Robin Hood Army is a volunteer-based Zero funds organization that\
+     works to get surplus food from restaurants to the less fortunate sections of society\
+      in cities across India and 14 other countries."
 app_icon = "octicon octicon-file-directory"
 app_color = "grey"
 app_email = "shridhar.p@zerodha.com"
@@ -44,9 +47,7 @@ web_include_js = "/assets/robinhood/js/robinhood.js"
 # home_page = "login"
 
 # website user home page (by Role)
-# role_home_page = {
-#	"Role": "home_page"
-# }
+# role_home_page = {"Role": "home_page"}
 
 # Generators
 # ----------
@@ -104,7 +105,7 @@ web_include_js = "/assets/robinhood/js/robinhood.js"
 # 		"on_update": "method",
 # 		"on_cancel": "method",
 # 		"on_trash": "method"
-#	}
+# }
 # }
 
 # Scheduled Tasks

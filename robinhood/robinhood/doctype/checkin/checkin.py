@@ -5,7 +5,7 @@
 import frappe
 from frappe.model.document import Document
 from frappe.utils.background_jobs import enqueue
-# from pdf_text_overlay import pdf_from_template
+from pdf_text_overlay import pdf_from_template
 
 
 class Checkin(Document):
@@ -42,11 +42,13 @@ class Checkin(Document):
             }
             frappe.sendmail(
                 recipients=self.user,
-                subject="Congratulations! You won a certificate in recognition to your work",
+                subject="Congratulations! You won a certificate in recognition to your \
+                    work",
                 message="Enjoy",
                 attachments=[certificate_pdf],
                 delayed=False,
             )
+
     def before_insert(self):
         self.user = frappe.session.user
 
@@ -107,13 +109,13 @@ def checkins(city):
 @frappe.whitelist(allow_guest=True)
 def top_robins(city):
     """Top ronins."""
-    return frappe.db.sql("""SELECT c.name, c.selfie, c.creation, c.location, c.meals_served
-            from `tabCheckin` c
-            INNER JOIN `tabRobin Chapter Mapping` as r
-                ON c.chapter = r.name
-            INNER JOIN `tabChapter` as cp
-                ON r.chapter = cp.name
-            WHERE c.creation >= now() - INTERVAL 30 DAY
-                and cp.city = %(city)s
-            order by date(c.creation)""", {"city": city}
-    )
+    return frappe.db.sql("""SELECT c.name,
+        c.selfie, c.creation, c.location, c.meals_served
+        from `tabCheckin` c
+        INNER JOIN `tabRobin Chapter Mapping` as r
+            ON c.chapter = r.name
+        INNER JOIN `tabChapter` as cp
+            ON r.chapter = cp.name
+        WHERE c.creation >= now() - INTERVAL 30 DAY
+            and cp.city = %(city)s
+        order by date(c.creation)""", {"city": city})

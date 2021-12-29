@@ -3,4 +3,5 @@
 *.egg-info
 *.swp
 tags
+.tox/
 robinhood/docs/current
