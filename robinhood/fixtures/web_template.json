@@ -17,14 +17,14 @@
   "docstatus": 0,
   "doctype": "Web Template",
   "fields": [],
-  "modified": "2021-12-30 13:20:46.604214",
+  "modified": "2021-12-30 14:30:14.326166",
   "module": "Robinhood",
   "name": "checkins-chart",
   "parent": null,
   "parentfield": null,
   "parenttype": null,
-  "standard": 1,
-  "template": "",
+  "standard": 0,
+  "template": "<h2>Checkin trend</h2>\n\n<div id=\"chart\"></div>\n<script type=\"text/javascript\">\n    var city = ''\n    if (window.location.pathname.includes('city')) {\n        city = window.location.pathname.split('/')[2]\n    }\n\n    frappe.call({\n        method: \"robinhood.robinhood.doctype.checkin.checkin.checkins\",\n        freeze: true,\n        type: 'get',\n        args: {\n            \"city\": city\n        },\n        callback: function(r) {\n            if (r) {\n                const data = {\n                    labels: r.message['labels'],\n                    datasets: [{\n                        name: \"Checkins\",\n                        type: \"bar\",\n                        values: r.message['values']\n                    }, ]\n                }\n\n                const chart = new Chart.Chart(\"#chart\", { // or a DOM element,\n                    // new Chart() in case of ES6 module with above usage\n                    title: \"Checkins for last 30days\",\n                    data: data,\n                    type: 'bar', // or 'bar', 'line', 'scatter', 'pie', 'percentage'\n                    height: 250,\n                    colors: ['#0B622E', '#0B622E']\n                })\n            }\n        }\n    });\n    </script>",
   "type": "Section"
  },
  {
