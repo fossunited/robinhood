@@ -1,19 +1,11 @@
 {
- "__islocal": true,
+ "__unsaved": 1,
  "creation": "2021-12-23 12:52:58.533716",
  "docstatus": 0,
  "doctype": "Web Template",
- "fields": [
-  {
-   "__islocal": 1,
-   "fieldname": "ddd",
-   "fieldtype": "Data",
-   "label": "ddd",
-   "reqd": 0
-  }
- ],
+ "fields": [],
  "idx": 0,
- "modified": "2021-12-23 12:52:58.533716",
+ "modified": "2021-12-30 13:20:46.604214",
  "modified_by": "Administrator",
  "module": "Robinhood",
  "name": "charts",

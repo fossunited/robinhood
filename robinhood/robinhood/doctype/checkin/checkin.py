@@ -5,7 +5,7 @@
 import frappe
 from frappe.model.document import Document
 from frappe.utils.background_jobs import enqueue
-from pdf_text_overlay import pdf_from_template
+# from pdf_text_overlay import pdf_from_template
 
 
 class Checkin(Document):
@@ -85,7 +85,7 @@ def checkins(city):
                 ON c.chapter = r.name
             INNER JOIN `tabChapter` as cp
                 ON r.chapter = cp.name
-            WHERE c.creation >= now() - INTERVAL 30 day
+            WHERE c.creation >= now() - INTERVAL 60 day
                 and cp.city = %(city)s
             group by date(c.creation)  order by date(c.creation)
 
@@ -93,7 +93,7 @@ def checkins(city):
     else:
         query = """SELECT sum(meals_served), date(creation)
             from `tabCheckin`
-            WHERE creation >= now() - INTERVAL 30 day
+            WHERE creation >= now() - INTERVAL 60 day
             group by date(creation) order by date(creation)"""
 
     data = frappe.db.sql(query, {"city": city}, as_list=True)
@@ -116,6 +116,6 @@ def top_robins(city):
             ON c.chapter = r.name
         INNER JOIN `tabChapter` as cp
             ON r.chapter = cp.name
-        WHERE c.creation >= now() - INTERVAL 30 DAY
+        WHERE c.creation >= now() - INTERVAL 60 DAY
             and cp.city = %(city)s
         order by date(c.creation)""", {"city": city})

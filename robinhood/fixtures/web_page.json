@@ -20,7 +20,7 @@
   "meta_description": null,
   "meta_image": null,
   "meta_title": null,
-  "modified": "2021-12-28 12:01:50.982907",
+  "modified": "2021-12-30 13:59:35.418621",
   "module": "Robinhood",
   "name": "recent-checkins",
   "page_blocks": [
@@ -34,7 +34,7 @@
     "parent": "recent-checkins",
     "parentfield": "page_blocks",
     "parenttype": "Web Page",
-    "web_template": "charts",
+    "web_template": "checkins-chart",
     "web_template_values": null
    },
    {
@@ -47,7 +47,7 @@
     "parent": "recent-checkins",
     "parentfield": "page_blocks",
     "parenttype": "Web Page",
-    "web_template": "Top City",
+    "web_template": "city",
     "web_template_values": null
    },
    {
@@ -60,7 +60,7 @@
     "parent": "recent-checkins",
     "parentfield": "page_blocks",
     "parenttype": "Web Page",
-    "web_template": "Top chapters",
+    "web_template": "top-chapters",
     "web_template_values": null
    },
    {
@@ -73,7 +73,7 @@
     "parent": "recent-checkins",
     "parentfield": "page_blocks",
     "parenttype": "Web Page",
-    "web_template": "Recent checkins",
+    "web_template": "top-robins",
     "web_template_values": null
    }
   ],
@@ -87,7 +87,7 @@
   "slideshow": null,
   "start_date": null,
   "text_align": "Left",
-  "title": "City",
+  "title": "Robin Hood Army checkins",
   "website_sidebar": null
  },
  {
@@ -163,11 +163,24 @@
   "meta_description": null,
   "meta_image": null,
   "meta_title": null,
-  "modified": "2021-12-28 11:57:31.599511",
+  "modified": "2021-12-30 13:40:23.813265",
   "module": "Robinhood",
   "name": "homepage",
   "page_blocks": [
    {
+    "add_bottom_padding": 0,
+    "add_container": 1,
+    "add_shade": 0,
+    "add_top_padding": 1,
+    "css_class": null,
+    "hide_block": 0,
+    "parent": "homepage",
+    "parentfield": "page_blocks",
+    "parenttype": "Web Page",
+    "web_template": "Markdown",
+    "web_template_values": "{\"content\":\"# Checkin portal\\n\\nWelcome to the Robin Hood Army Robin checkin portal. Robins going out on food distribution drives can do a self-checkin on this portal while in the field. This portal displays checkin trends and statistics across cities and chapters.\",\"align\":\"Left\"}"
+   },
+   {
     "add_bottom_padding": 1,
     "add_container": 1,
     "add_shade": 0,
@@ -177,7 +190,7 @@
     "parent": "homepage",
     "parentfield": "page_blocks",
     "parenttype": "Web Page",
-    "web_template": "charts",
+    "web_template": "checkins-chart",
     "web_template_values": null
    },
    {
@@ -190,7 +203,7 @@
     "parent": "homepage",
     "parentfield": "page_blocks",
     "parenttype": "Web Page",
-    "web_template": "Top cities",
+    "web_template": "top-cities",
     "web_template_values": null
    },
    {
@@ -203,7 +216,7 @@
     "parent": "homepage",
     "parentfield": "page_blocks",
     "parenttype": "Web Page",
-    "web_template": "Top chapters",
+    "web_template": "top-chapters",
     "web_template_values": null
    },
    {
@@ -216,7 +229,7 @@
     "parent": "homepage",
     "parentfield": "page_blocks",
     "parenttype": "Web Page",
-    "web_template": "Recent checkins",
+    "web_template": "top-robins",
     "web_template_values": null
    }
   ],
@@ -281,7 +294,7 @@
     "parent": "chapters",
     "parentfield": "page_blocks",
     "parenttype": "Web Page",
-    "web_template": "charts",
+    "web_template": "checkins-chart",
     "web_template_values": null
    }
   ],
