@@ -20,25 +20,12 @@
   "meta_description": null,
   "meta_image": null,
   "meta_title": null,
-  "modified": "2021-12-30 14:47:40.808365",
+  "modified": "2021-12-30 15:48:08.018408",
   "module": "Robinhood",
   "name": "recent-checkins",
   "page_blocks": [
    {
-    "add_bottom_padding": 1,
-    "add_container": 1,
-    "add_shade": 0,
-    "add_top_padding": 1,
-    "css_class": null,
-    "hide_block": 0,
-    "parent": "recent-checkins",
-    "parentfield": "page_blocks",
-    "parenttype": "Web Page",
-    "web_template": "checkins-chart",
-    "web_template_values": null
-   },
-   {
-    "add_bottom_padding": 1,
+    "add_bottom_padding": 0,
     "add_container": 1,
     "add_shade": 0,
     "add_top_padding": 1,
@@ -48,6 +35,19 @@
     "parentfield": "page_blocks",
     "parenttype": "Web Page",
     "web_template": "city",
+    "web_template_values": null
+   },
+   {
+    "add_bottom_padding": 0,
+    "add_container": 1,
+    "add_shade": 0,
+    "add_top_padding": 1,
+    "css_class": null,
+    "hide_block": 0,
+    "parent": "recent-checkins",
+    "parentfield": "page_blocks",
+    "parenttype": "Web Page",
+    "web_template": "checkins-chart",
     "web_template_values": null
    },
    {
