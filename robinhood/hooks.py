@@ -226,8 +226,4 @@ fixtures = [
             ]
         ]
     }
-
-    # "Property Setter",
-    # "Custom Script",
-    # "Role"
 ]
