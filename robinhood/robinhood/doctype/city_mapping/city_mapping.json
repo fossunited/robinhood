@@ -1,16 +1,12 @@
 {
  "actions": [],
  "allow_rename": 1,
- "creation": "2021-11-29 18:07:27.827008",
+ "creation": "2021-12-31 09:08:09.073172",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
   "user",
-  "selfie",
-  "meals_served",
-  "tags",
-  "chapter",
   "city"
  ],
  "fields": [
@@ -18,30 +14,7 @@
    "fieldname": "user",
    "fieldtype": "Link",
    "label": "User",
-   "options": "User",
-   "read_only": 1
-  },
-  {
-   "fieldname": "selfie",
-   "fieldtype": "Attach Image",
-   "label": "Selfie"
-  },
-  {
-   "fieldname": "meals_served",
-   "fieldtype": "Int",
-   "label": "Meals Served"
-  },
-  {
-   "fieldname": "tags",
-   "fieldtype": "Table",
-   "label": "Tags",
-   "options": "Tag Users"
-  },
-  {
-   "fieldname": "chapter",
-   "fieldtype": "Link",
-   "label": "Chapter",
-   "options": "Robin Chapter Mapping"
+   "options": "User"
   },
   {
    "fieldname": "city",
@@ -52,10 +25,10 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2021-12-31 10:56:59.279179",
+ "modified": "2021-12-31 09:08:09.073172",
  "modified_by": "Administrator",
  "module": "Robinhood",
- "name": "Checkin",
+ "name": "City Mapping",
  "owner": "Administrator",
  "permissions": [
   {

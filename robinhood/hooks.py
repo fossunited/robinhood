@@ -23,7 +23,7 @@ app_license = "MIT"
 # web_include_css = "/assets/robinhood/css/robinhood.css"
 web_include_js = ["/assets/robinhood/js/chart.js", "/assets/robinhood/js/main.js"]
 
-
+# on_login = "robinhood.api.check_mapping.mapping"
 # include custom scss in every website theme (without file extension ".scss")
 # website_theme_scss = "robinhood/public/scss/website"
 
@@ -107,6 +107,13 @@ web_include_js = ["/assets/robinhood/js/chart.js", "/assets/robinhood/js/main.js
 # 		"on_trash": "method"
 # }
 # }
+
+doc_events = {
+    "User profile update": {
+        # will run before a ToDo record is inserted into database
+        "on_update": "robinhood.api.user.update",
+    }
+}
 
 # Scheduled Tasks
 # ---------------

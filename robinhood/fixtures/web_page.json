@@ -150,7 +150,7 @@
   "meta_description": null,
   "meta_image": null,
   "meta_title": null,
-  "modified": "2021-12-30 14:47:48.402530",
+  "modified": "2021-12-31 10:46:26.170263",
   "module": "Robinhood",
   "name": "homepage",
   "page_blocks": [
@@ -168,7 +168,7 @@
     "web_template_values": "{\"content\":\"# Checkin portal\\n\\nWelcome to the Robin Hood Army Robin checkin portal. Robins going out on food distribution drives can do a self-checkin on this portal while in the field. This portal displays checkin trends and statistics across cities and chapters.\",\"align\":\"Left\"}"
    },
    {
-    "add_bottom_padding": 1,
+    "add_bottom_padding": 0,
     "add_container": 1,
     "add_shade": 0,
     "add_top_padding": 1,
@@ -181,7 +181,7 @@
     "web_template_values": null
    },
    {
-    "add_bottom_padding": 1,
+    "add_bottom_padding": 0,
     "add_container": 1,
     "add_shade": 0,
     "add_top_padding": 1,

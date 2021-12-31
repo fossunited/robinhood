@@ -1,0 +1,22 @@
+{
+ "content": null,
+ "creation": "2021-12-31 09:09:27.485788",
+ "docstatus": 0,
+ "doctype": "Page",
+ "idx": 0,
+ "modified": "2021-12-31 09:09:27.485788",
+ "modified_by": "Administrator",
+ "module": "Robinhood",
+ "name": "robin-hood-army-chec",
+ "owner": "Administrator",
+ "page_name": "robin-hood-army-checkin",
+ "roles": [
+  {
+   "role": "All"
+  }
+ ],
+ "script": null,
+ "standard": "Yes",
+ "style": null,
+ "system_page": 0
+}

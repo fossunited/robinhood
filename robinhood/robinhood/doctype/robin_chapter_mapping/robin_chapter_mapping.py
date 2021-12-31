@@ -11,3 +11,18 @@ class RobinChapterMapping(Document):
     def before_insert(self):
         if not self.user:
             self.user = frappe.session.user
+
+
+@frappe.whitelist()
+def get_mapped_city():
+    """Return mapped cities."""
+    return
+    data = frappe.db.sql("""
+        SELECT c.city as value
+        FROM `tabChapter` c
+        INNER JOIN `tabRobin Chapter Mapping` as r
+            ON c.name = r.chapter
+        WHERE r.user = %(user)s
+
+    """, {"user": frappe.session.user}, as_dict=True)
+    return data

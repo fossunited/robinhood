@@ -1,61 +1,57 @@
 {
  "actions": [],
  "allow_rename": 1,
- "creation": "2021-11-29 18:07:27.827008",
+ "creation": "2021-12-31 15:08:00.160803",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "user",
-  "selfie",
-  "meals_served",
-  "tags",
-  "chapter",
+  "first_name",
+  "middle_name",
+  "last_name",
+  "phone",
+  "mobile_no",
   "city"
  ],
  "fields": [
   {
-   "fieldname": "user",
-   "fieldtype": "Link",
-   "label": "User",
-   "options": "User",
-   "read_only": 1
+   "fieldname": "first_name",
+   "fieldtype": "Data",
+   "label": "First Name"
   },
   {
-   "fieldname": "selfie",
-   "fieldtype": "Attach Image",
-   "label": "Selfie"
+   "fieldname": "middle_name",
+   "fieldtype": "Data",
+   "label": "Middle Name"
   },
   {
-   "fieldname": "meals_served",
-   "fieldtype": "Int",
-   "label": "Meals Served"
+   "fieldname": "last_name",
+   "fieldtype": "Data",
+   "label": "Last Name"
   },
   {
-   "fieldname": "tags",
-   "fieldtype": "Table",
-   "label": "Tags",
-   "options": "Tag Users"
-  },
-  {
-   "fieldname": "chapter",
-   "fieldtype": "Link",
-   "label": "Chapter",
-   "options": "Robin Chapter Mapping"
+   "fieldname": "phone",
+   "fieldtype": "Data",
+   "label": "Phone"
   },
   {
    "fieldname": "city",
    "fieldtype": "Link",
    "label": "City",
    "options": "City"
+  },
+  {
+   "fieldname": "mobile_no",
+   "fieldtype": "Data",
+   "label": "Mobile Number"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2021-12-31 10:56:59.279179",
+ "modified": "2021-12-31 15:08:31.120123",
  "modified_by": "Administrator",
  "module": "Robinhood",
- "name": "Checkin",
+ "name": "User profile update",
  "owner": "Administrator",
  "permissions": [
   {
