@@ -203,7 +203,7 @@
   "is_standard": 1,
   "login_required": 1,
   "max_attachment_size": 0,
-  "modified": "2021-12-31 15:08:36.178207",
+  "modified": "2022-01-01 11:30:30.500104",
   "module": "Robinhood",
   "name": "profie",
   "parent": null,
@@ -347,7 +347,7 @@
     "parenttype": "Web Form",
     "read_only": 0,
     "read_only_depends_on": null,
-    "reqd": 0,
+    "reqd": 1,
     "show_in_filter": 0
    }
   ],

@@ -16,7 +16,6 @@ class RobinChapterMapping(Document):
 @frappe.whitelist()
 def get_mapped_city():
     """Return mapped cities."""
-    return
     data = frappe.db.sql("""
         SELECT c.city as value
         FROM `tabChapter` c

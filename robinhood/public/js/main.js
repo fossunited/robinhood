@@ -5,12 +5,12 @@
 })();
 
 function checkMapping(){
-	if(window.location.href.split('/').at(-1) != 'profile-update'){
+	if(window.location.href.split('/').at(-1) != 'profile-update' && frappe.session.user != 'Guest'){
 		frappe.call({
-			method: "robinhood.robinhood.doctype.robin_chapter_mapping.robin_chapter_mapping.get_mapped_city",
+			method: "robinhood.api.check_mapping.mapping",
 			callback: function (r) {
 			    console.log(r.message)
-				if (!r.message) {
+				if (r.message.length === 0) {
 				    window.location = '/profile-update'
 				}
 			}

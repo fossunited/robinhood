@@ -1,6 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
+ "autoname": "filed:owner",
  "creation": "2021-12-31 15:08:00.160803",
  "doctype": "DocType",
  "editable_grid": 1,
@@ -48,10 +49,11 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2021-12-31 15:08:31.120123",
+ "modified": "2022-01-01 11:26:57.239835",
  "modified_by": "Administrator",
  "module": "Robinhood",
  "name": "User profile update",
+ "naming_rule": "Expression (old style)",
  "owner": "Administrator",
  "permissions": [
   {
