@@ -5,7 +5,7 @@
 })();
 
 function checkMapping(){
-	if(window.location.href.split('/').at(-1) != 'profile-update' && frappe.session.user != 'Guest'){
+	if(window.location.href.split('/').at(-1) != 'profile-update' && frappe.session && frappe.session.user != 'Guest'){
 		frappe.call({
 			method: "robinhood.api.check_mapping.mapping",
 			callback: function (r) {
