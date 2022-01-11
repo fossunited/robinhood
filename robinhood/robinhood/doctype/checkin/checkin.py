@@ -16,7 +16,6 @@ class Checkin(Document):
         """
         Generate a certificate after every 10 and 100 checkins to be sent to the respective robin.
         """
-
         jinja_data = {
             "robin_name": frappe.db.get_value(
                 "User", {"email": self.owner}, ["first_name"]
