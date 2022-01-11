@@ -16,6 +16,7 @@ class Checkin(Document):
         """
         Generate a certificate after every 10 and 100 checkins to be sent to the respective robin.
         """
+
         jinja_data = {
             "robin_name": frappe.db.get_value(
                 "User", {"email": self.owner}, ["first_name"]
@@ -51,6 +52,7 @@ class Checkin(Document):
                 "fname": filename,
                 "fcontent": filecontent,
             }
+
             frappe.sendmail(
                 recipients=[self.owner],
                 subject="Congratulations! You won a certificate in recognition to your work",
@@ -70,7 +72,6 @@ class Checkin(Document):
             [self.owner],
             as_dict=True,
         )
-        res[0]["count"] = 10
         if res and res[0]["count"] in [10, 100]:
             enqueue(self.generate_certificate, checkin_count=res[0]["count"])
 
