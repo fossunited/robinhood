@@ -2,23 +2,36 @@
 # For license information, please see license.txt
 
 
+import time
+
 import frappe
 from frappe.model.document import Document
+from frappe.utils import get_url
 from frappe.utils.background_jobs import enqueue
 from pdf_text_overlay import pdf_from_template
 
 
 class Checkin(Document):
-    def generate_certificate(self):
+    def generate_certificate(self, checkin_count):
         """
-        Generate a certificate after every N checkins to be sent to the respective robin.
+        Generate a certificate after every 10 and 100 checkins to be sent to the respective robin.
         """
+
         jinja_data = {
             "robin_name": frappe.db.get_value(
                 "User", {"email": self.user}, ["first_name"]
             ),
-            "checkins_milestone": 50,
+            "base_url": get_url(),
+            # "base_url": "http://0.0.0.0:8010",
+            "robin_location": "Hyderabad",
+            "certificate_date": time.strftime("%d %B %Y"),  # 12 December 2022
         }
+
+        certificate_filename = None
+        if checkin_count == 10:
+            certificate_filename = "ninja.html"
+        elif checkin_count == 100:
+            certificate_filename = "centurion.html"
 
         with open(
             frappe.get_app_path(
@@ -27,7 +40,7 @@ class Checkin(Document):
                 "doctype",
                 "checkin",
                 "certificate",
-                "certificate.html",
+                certificate_filename,
             )
         ) as htmlfile:
             html_str = htmlfile.read()
@@ -40,10 +53,11 @@ class Checkin(Document):
                 "fname": filename,
                 "fcontent": filecontent,
             }
+
             frappe.sendmail(
                 recipients=self.user,
                 subject="Congratulations! You won a certificate in recognition to your work",
-                message="Enjoy",
+                message="Congratulations! You won a certificate in recognition to your work",
                 attachments=[certificate_pdf],
                 delayed=False,
             )
@@ -53,15 +67,14 @@ class Checkin(Document):
             """
         SELECT COUNT(*) AS count
         FROM `tabCheckin`
-        WHERE user=%s 
+        WHERE user=%s
         GROUP BY user
-        HAVING COUNT(*)>%s
         """,
-            [self.user, 20],
+            [self.user],
             as_dict=True,
         )
-        if res[0]["count"]:
-            enqueue(self.generate_certificate)
+        if res[0]["count"] in [10, 100]:
+            enqueue(self.generate_certificate, checkin_count=res[0]["count"])
 
 
 @frappe.whitelist()

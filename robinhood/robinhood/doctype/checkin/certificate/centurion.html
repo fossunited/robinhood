@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="pdfkit-page-size" content="A3" />
+    <meta name="pdfkit-orientation" content="Landscape" />
+
+    <style>
+      @font-face {
+        font-family: "myriad-pro";
+        src: url("{{base_url}}/assets/robinhood/fonts/myriad_pro_regular.ttf");
+        /* src: url("/Users/nikhilponnuru/frappe/v-13/apps/robinhood/robinhood/public/fonts/myriad_pro_regular.ttf"); */
+        font-weight: "bold";
+      }
+      * {
+        font-family: "myriad-pro";
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      style="
+        border-width: 1px;
+        border-color: black;
+        border-style: solid;
+        width: 1600px;
+        height: 1200px;
+        display: -webkit-box;
+        display: flex;
+        flex: 1;
+        -webkit-flex: 1;
+        -webkit-box-flex: 1;
+      "
+    >
+      <div style="width: 770px">
+        <img
+          src="{{base_url}}/assets/robinhood/images/centurion.png"
+          style="position: absolute; width: 810px; height: 1200px"
+        />
+        <div
+          style="
+            width: 315;
+            height: 160;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: absolute;
+            top: 404;
+            background-color: #165f30;
+          "
+        >
+          <img
+            src="{{base_url}}/assets/robinhood/images/robinhood_army.png"
+            width="450px"
+            height="80px"
+            style="position: absolute; top: 900px; left: 95px"
+          />
+          <p
+            style="
+              font-size: 120px;
+              color: white;
+              position: absolute;
+              left: 85px;
+              top: 900px;
+            "
+          >
+            Centurion
+          </p>
+        </div>
+      </div>
+
+      <div style="width: 830px; padding-top: 40px">
+        <div style="margin-left: 90px">
+          <div>
+            <p style="font-size: 50px">Congratulations</p>
+            <p style="font-size: 75px; margin-top: -14px; font-weight: bold">
+              {{robin_name}}
+            </p>
+            <p style="color: #666666; font-size: 38px; margin-top: -25px">
+              From {{robin_location}}
+            </p>
+          </div>
+          <div style="margin-top: 75px">
+            <p style="font-size: 50px">on completing</p>
+            <p
+              style="
+                font-size: 75px;
+                font-weight: bold;
+                margin-top: -18px;
+                font-weight: bold;
+              "
+            >
+              100 food drives
+            </p>
+          </div>
+        </div>
+        <hr
+          style="
+            background-color: #165f30;
+            margin-top: 190px;
+            border-width: 1px;
+          "
+        />
+        <div style="margin-left: 90px; padding-top: 35px">
+          <p style="font-size: 48px; color: #222222">Issued on</p>
+          <p style="font-size: 70px; font-weight: bold; margin-top: -16px">
+            {{certificate_date}}
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
