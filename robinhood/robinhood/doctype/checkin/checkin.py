@@ -16,14 +16,15 @@ class Checkin(Document):
         """
         Generate a certificate after every 10 and 100 checkins to be sent to the respective robin.
         """
-
         jinja_data = {
             "robin_name": frappe.db.get_value(
-                "User", {"email": self.user}, ["first_name"]
+                "User", {"email": self.owner}, ["first_name"]
             ),
             "base_url": get_url(),
             # "base_url": "http://0.0.0.0:8010",
-            "robin_location": "Hyderabad",
+            "robin_location": frappe.db.get_value(
+                "Robin Chapter Mapping", {"user": self.owner}, ["chapter"]
+            ),
             "certificate_date": time.strftime("%d %B %Y"),  # 12 December 2022
         }
 
@@ -55,7 +56,7 @@ class Checkin(Document):
             }
 
             frappe.sendmail(
-                recipients=self.user,
+                recipients=[self.owner],
                 subject="Congratulations! You won a certificate in recognition to your work",
                 message="Congratulations! You won a certificate in recognition to your work",
                 attachments=[certificate_pdf],
@@ -67,13 +68,13 @@ class Checkin(Document):
             """
         SELECT COUNT(*) AS count
         FROM `tabCheckin`
-        WHERE user=%s
-        GROUP BY user
+        WHERE owner=%s
+        GROUP BY owner
         """,
-            [self.user],
+            [self.owner],
             as_dict=True,
         )
-        if res[0]["count"] in [10, 100]:
+        if res and res[0]["count"] in [10, 100]:
             enqueue(self.generate_certificate, checkin_count=res[0]["count"])
 
 
