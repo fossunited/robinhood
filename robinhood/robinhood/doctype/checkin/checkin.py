@@ -51,7 +51,6 @@ class Checkin(Document):
                 "fname": filename,
                 "fcontent": filecontent,
             }
-
             frappe.sendmail(
                 recipients=[self.owner],
                 subject="Congratulations! You won a certificate in recognition to your work",
@@ -71,6 +70,7 @@ class Checkin(Document):
             [self.owner],
             as_dict=True,
         )
+        res[0]["count"] = 10
         if res and res[0]["count"] in [10, 100]:
             enqueue(self.generate_certificate, checkin_count=res[0]["count"])
 
