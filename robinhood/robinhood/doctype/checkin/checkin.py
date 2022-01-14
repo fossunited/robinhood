@@ -46,15 +46,11 @@ class Checkin(Document):
         ) as htmlfile:
             html_str = htmlfile.read()
             filecontent = pdf_from_template(html_str, jinja_data)
-            filename = f"{self.user}_certificate.pdf"
-            with open(filename, "wb") as attachment:
-                attachment.write(filecontent)
-
+            filename = f"{self.owner}_certificate.pdf"
             certificate_pdf = {
                 "fname": filename,
                 "fcontent": filecontent,
             }
-
             frappe.sendmail(
                 recipients=[self.owner],
                 subject="Congratulations! You won a certificate in recognition to your work",
@@ -74,6 +70,7 @@ class Checkin(Document):
             [self.owner],
             as_dict=True,
         )
+        res[0]["count"] = 10
         if res and res[0]["count"] in [10, 100]:
             enqueue(self.generate_certificate, checkin_count=res[0]["count"])
 
