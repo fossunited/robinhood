@@ -5,9 +5,11 @@
 import time
 
 import frappe
+import pdfkit
 from frappe.model.document import Document
 from frappe.utils import get_url
 from frappe.utils.background_jobs import enqueue
+from jinja2 import Template
 from pdf_text_overlay import pdf_from_template
 
 
@@ -46,6 +48,18 @@ class Checkin(Document):
         ) as htmlfile:
             html_str = htmlfile.read()
             filecontent = pdf_from_template(html_str, jinja_data)
+            filecontent = pdfkit.from_string(
+                Template(html_str).render(**jinja_data),
+                None,
+                options={
+                    "margin-top": "0",
+                    "margin-bottom": "0",
+                    "margin-left": "0",
+                    "margin-right": "0",
+                    "page-size": "Legal",
+                    "orientation": "Landscape",
+                },
+            )
             filename = f"{self.owner}_certificate.pdf"
             certificate_pdf = {
                 "fname": filename,
@@ -70,7 +84,6 @@ class Checkin(Document):
             [self.owner],
             as_dict=True,
         )
-        res[0]["count"] = 10
         if res and res[0]["count"] in [10, 100]:
             enqueue(self.generate_certificate, checkin_count=res[0]["count"])
 
