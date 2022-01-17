@@ -20,7 +20,7 @@
  "is_standard": 1,
  "login_required": 1,
  "max_attachment_size": 0,
- "modified": "2022-01-01 11:30:30.500104",
+ "modified": "2022-01-17 11:12:30.195120",
  "modified_by": "Administrator",
  "module": "Robinhood",
  "name": "profie",
@@ -98,7 +98,7 @@
    "show_in_filter": 0
   },
   {
-   "allow_read_on_all_link_options": 0,
+   "allow_read_on_all_link_options": 1,
    "fieldname": "city",
    "fieldtype": "Link",
    "hidden": 0,
