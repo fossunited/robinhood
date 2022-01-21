@@ -3,6 +3,20 @@
   "docstatus": 0,
   "doctype": "Web Template",
   "fields": [],
+  "modified": "2021-12-31 10:02:55.201369",
+  "module": "Robinhood",
+  "name": "Heat-Map",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "standard": 1,
+  "template": "",
+  "type": "Section"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Web Template",
+  "fields": [],
   "modified": "2021-12-31 11:38:22.362672",
   "module": "Robinhood",
   "name": "top-cities",
@@ -31,14 +45,14 @@
   "docstatus": 0,
   "doctype": "Web Template",
   "fields": [],
-  "modified": "2021-12-31 11:41:52.269329",
+  "modified": "2022-01-21 13:40:21.182670",
   "module": "Robinhood",
   "name": "top-robins",
   "parent": null,
   "parentfield": null,
   "parenttype": null,
   "standard": 0,
-  "template": "\n{% set args = frappe.form_dict %}\n{% if args %}\n    {% set checkins = frappe.db.sql(\"\"\" SELECT c.name, c.selfie, c.creation, u.full_name as owner, c.city as chapter, sum(c.meals_served) as meals_served from `tabCheckin` c  inner join `tabUser` as u on c.owner = u.name WHERE  c.city = %(city)s group by c.owner order by meals_served limit 10\"\"\", args, as_dict=True    ) %}\n{% else %}\n    {%   set checkins = frappe.db.sql(\"\"\" SELECT c.name, c.selfie, c.creation, u.full_name as owner, c.city as chapter, sum(c.meals_served) as meals_served from `tabCheckin` c inner join `tabUser` as u on c.owner = u.name group by c.owner, c.city order by meals_served  limit 10\"\"\", as_dict=True)%}\n{% endif %}\n\n\n<h2>Top Robins</h2>\n    <div>Robins who have checked in the most while out on drives in the last 60 days.</div>\n\n<table>\n        <tr>\n            <th class='table-header'></th>\n            <th class='table-header'>Name</th>\n            <th class='table-header'>Chapter</th>\n            <th class='table-header'>Drives</th>\n        </tr>\n        {% for checkin in checkins %}\n        \n            <tr>\n                <td class='text-center'><span><img src={{checkin.selfie}} alt=\"Italian Trulli\"> </span></td>\n                <td class='border-bottom'>{{ checkin.owner }}</td>\n                <td class='border-bottom'> <a href = '/city/{{ checkin.chapter }}'>{{ checkin.chapter }}</a> </td>\n                <td class='border-bottom'>{{ frappe.format(checkin.meals_served) }}</td>\n            </tr>\n        {% endfor %}\n    </table>\n    ",
+  "template": "\n{% set args = frappe.form_dict %}\n{% if args %}\n    {% set checkins = frappe.db.sql(\"\"\"SELECT c.name, c.selfie, c.creation, u.full_name as owner, c.city as chapter, count(*) as checkin_count from `tabCheckin` c  inner join `tabUser` as u on c.owner = u.name WHERE  c.city = %(city)s group by c.owner order by meals_served limit 10\"\"\", args, as_dict=True    ) %}\n{% else %}\n    {%   set checkins = frappe.db.sql(\"\"\" SELECT c.name, c.selfie, c.creation, u.full_name as owner, c.city as chapter, count(*) as checkin_count from `tabCheckin` c inner join `tabUser` as u on c.owner = u.name group by c.owner, c.city order by meals_served  limit 10\"\"\", as_dict=True)%}\n{% endif %}\n\n\n<h2>Top Robins</h2>\n    <div>Robins who have checked in the most while out on drives in the last 60 days.</div>\n\n<table>\n        <tr>\n            <th class='table-header'></th>\n            <th class='table-header'>Name</th>\n            <th class='table-header'>Chapter</th>\n            <th class='table-header'>Drives</th>\n        </tr>\n        {% for checkin in checkins %}\n        \n            <tr>\n                <td class='text-center'><span><img src={{checkin.selfie}} alt=\"Italian Trulli\"> </span></td>\n                <td class='border-bottom'>{{ checkin.owner }}</td>\n                <td class='border-bottom'> <a href = '/city/{{ checkin.chapter }}'>{{ checkin.chapter }}</a> </td>\n                <td class='border-bottom'>{{ frappe.format(checkin.checkin_count) }}</td>\n            </tr>\n        {% endfor %}\n    </table>\n    ",
   "type": "Section"
  },
  {
@@ -53,20 +67,6 @@
   "parenttype": null,
   "standard": 0,
   "template": "<div>\n    The Robin Hood Army is a volunteer-based Zero funds organization that works to get surplus food from restaurants to the less fortunate sections of society in cities across India and 14 other countries. \n    <a href=\"https://en.wikipedia.org/wiki/Robin_Hood_Army\">Wikipedia</a>\n</div>",
-  "type": "Section"
- },
- {
-  "docstatus": 0,
-  "doctype": "Web Template",
-  "fields": [],
-  "modified": "2021-11-30 08:32:19.685484",
-  "module": "Robinhood",
-  "name": "Heat-Map",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
-  "standard": 1,
-  "template": "",
   "type": "Section"
  },
  {
@@ -95,6 +95,20 @@
   "parenttype": null,
   "standard": 0,
   "template": "{% set args = frappe.form_dict %}\n{% if args %}\n    {% set chapters = frappe.db.sql(\"\"\"select sum(c.meals_served) as meals_served, r.chapter from `tabCheckin` as c INNER JOIN `tabRobin Chapter Mapping` as r on c.chapter = r.name  inner join `tabChapter` as cp on r.chapter = cp.name  where cp.city = %(city)s group by r.chapter\"\"\", args, as_dict=True    ) %}\n{% else %}\n    {%   set chapters = frappe.db.sql(\"\"\" select sum(c.meals_served) as meals_served, r.chapter from `tabCheckin` as c INNER JOIN `tabRobin Chapter Mapping` as r on c.chapter = r.name group by r.chapter\"\"\", as_dict=True) %}\n{% endif %}\n<div>\n    <h2>Top chapters</h2>\n    <div class=\"dheight\">\n        The Robin Hood Army is a volunteer-based Zero funds organization that works to get surplus food from restaurants\n    </div>\n</div>\n<div class=\"row dheight\">\n    {% for chapter in chapters %}\n    <div class=\"col-md-6\">\n        <div class=\"row dheight\">\n            <div class=\"col-md-3\">\n                {{ loop.index }}. {{ chapter.chapter}}\n            </div>\n            <div class=\"col-md-9\">\n                <div style='background-color:green;width:70%;height: 5px;border-radius: 3px;'></div>\n                <div>{{ frappe.format(chapter.meals_served) }}</div>\n            </div>\n        </div>\n    </div>\n   \n    {% endfor %}\n    \n</div>",
+  "type": "Section"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Web Template",
+  "fields": [],
+  "modified": "2022-01-21 20:08:45.624476",
+  "module": "Robinhood",
+  "name": "Gallery",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "standard": 0,
+  "template": "{% set args = frappe.form_dict %}\n{% if args %}\n    {% set images = frappe.db.sql(\"\"\"SELECT upu.first_name, c.selfie, c.creation, date(c.creation) as posting_date from `tabCheckin` c JOIN `tabUser Profile Update` upu on c.owner=upu.owner  WHERE  c.city = %(city)s and c.selfie is not null order by creation limit 60;\"\"\", args, as_dict=True    ) %}\n{% else %}\n    {%   set images = frappe.db.sql(\"\"\"SELECT upu.first_name, c.selfie, c.creation, date(c.creation) as posting_date from `tabCheckin` c JOIN `tabUser Profile Update` upu on c.owner=upu.owner  WHERE  c.selfie is not null order by creation limit 60;\"\"\", as_dict=True)%}\n{% endif %}\n\n<script>\n    \n    \n</script>\n\n\n<h2>Recent checkins</h2>\n<div style=\"display: flex;flex-direction:row;\">\n\n{% for image in images %}\n\n    <a target=\"_blank\" href={{ image.selfie }}>\n      <img src={{ image.selfie }}  width=\"200\" height=\"200\" class=\"img-thumbnail\" style=\"max-width:200;max-height:200; margin-right:5px\">\n      <p>{{image.first_name | capitalize }}</p>\n      <p style=\"color: grey; font-size:12px\">{{image.posting_date}}</p>\n    </a>\n{% endfor %}\n\n\n</div>\n",
   "type": "Section"
  }
 ]

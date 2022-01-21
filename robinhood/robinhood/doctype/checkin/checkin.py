@@ -2,6 +2,7 @@
 # For license information, please see license.txt
 
 
+import os
 import time
 
 import frappe
@@ -11,6 +12,22 @@ from frappe.utils import get_url
 from frappe.utils.background_jobs import enqueue
 from jinja2 import Template
 from pdf_text_overlay import pdf_from_template
+
+
+def image_resize(doc, method):
+    """
+    Resize uploaded selfies to a smaller size.
+    """
+    from PIL import Image
+
+    filepath = frappe.utils.get_site_path() + "/public" + doc.file_url
+    image = Image.open(filepath)
+    MAX_SIZE = (220, 220)
+
+    image.thumbnail(MAX_SIZE)
+    image.save(filepath)
+
+    return image
 
 
 class Checkin(Document):
@@ -89,10 +106,8 @@ class Checkin(Document):
 
 
 @frappe.whitelist()
-def fetch_sub_chapter(email):
-    return frappe.db.get_value(
-        "Robin Chapter Mapping", {"user": email}, ["sub_chapter"]
-    )
+def fetch_chapter(email):
+    return frappe.db.get_value("Robin Chapter Mapping", {"user": email}, ["chapter"])
 
 
 @frappe.whitelist(allow_guest=True)

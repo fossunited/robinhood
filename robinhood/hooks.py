@@ -112,7 +112,10 @@ doc_events = {
     "User profile update": {
         # will run before a ToDo record is inserted into database
         "on_update": "robinhood.api.user.update",
-    }
+    },
+    "File": {
+        "before_insert": "robinhood.robinhood.doctype.checkin.checkin.image_resize"
+    },
 }
 
 # Scheduled Tasks
@@ -192,38 +195,7 @@ doc_events = {
 # ]
 
 fixtures = [
-    {
-        "dt": "Web Page",
-        "filters": [
-            [
-                "module",
-                "in",
-                ("Robinhood")
-            ]
-        ]
-    },
-    {
-        "dt": "Web Template",
-        "filters": [
-            [
-                "module",
-                "in",
-                (
-                    "Robinhood"
-                )
-            ]
-        ]
-    },
-    {
-        "dt": "Web Form",
-        "filters": [
-            [
-                "module",
-                "in",
-                (
-                    "Robinhood"
-                )
-            ]
-        ]
-    }
+    {"dt": "Web Page", "filters": [["module", "in", ("Robinhood")]]},
+    {"dt": "Web Template", "filters": [["module", "in", ("Robinhood")]]},
+    {"dt": "Web Form", "filters": [["module", "in", ("Robinhood")]]},
 ]

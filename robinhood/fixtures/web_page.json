@@ -150,7 +150,7 @@
   "meta_description": null,
   "meta_image": null,
   "meta_title": null,
-  "modified": "2021-12-31 10:46:26.170263",
+  "modified": "2022-01-21 19:53:17.163334",
   "module": "Robinhood",
   "name": "homepage",
   "page_blocks": [
@@ -204,6 +204,19 @@
     "parentfield": "page_blocks",
     "parenttype": "Web Page",
     "web_template": "top-robins",
+    "web_template_values": null
+   },
+   {
+    "add_bottom_padding": 1,
+    "add_container": 1,
+    "add_shade": 0,
+    "add_top_padding": 1,
+    "css_class": null,
+    "hide_block": 0,
+    "parent": "homepage",
+    "parentfield": "page_blocks",
+    "parenttype": "Web Page",
+    "web_template": "Gallery",
     "web_template_values": null
    }
   ],
