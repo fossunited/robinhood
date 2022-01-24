@@ -11,7 +11,8 @@
   "meals_served",
   "tags",
   "chapter",
-  "city"
+  "city",
+  "selfie_thumbnail"
  ],
  "fields": [
   {
@@ -54,11 +55,17 @@
    "label": "City",
    "options": "City",
    "reqd": 1
+  },
+  {
+   "fieldname": "selfie_thumbnail",
+   "fieldtype": "Attach Image",
+   "hidden": 1,
+   "label": "Selfie Thumbnail"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-01-21 20:15:56.395972",
+ "modified": "2022-01-24 20:08:40.911220",
  "modified_by": "Administrator",
  "module": "Robinhood",
  "name": "Checkin",

@@ -114,7 +114,7 @@ doc_events = {
         "on_update": "robinhood.api.user.update",
     },
     "File": {
-        "before_insert": "robinhood.robinhood.doctype.checkin.checkin.image_resize"
+        "before_insert": "robinhood.robinhood.doctype.checkin.checkin.image_upsize"
     },
 }
 
