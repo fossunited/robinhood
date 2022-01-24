@@ -2,7 +2,10 @@
 # For license information, please see license.txt
 
 
+import os
+import shutil
 import time
+from pathlib import Path
 
 import frappe
 import pdfkit
@@ -11,9 +14,46 @@ from frappe.utils import get_url
 from frappe.utils.background_jobs import enqueue
 from jinja2 import Template
 from pdf_text_overlay import pdf_from_template
+from PIL import Image
+
+
+def image_upsize(file_doc, method):
+    """
+    Upsize the uploaded selfies to a standard size.
+    """
+
+    filepath = frappe.utils.get_site_path() + "/public" + file_doc.file_url
+    image = Image.open(filepath)
+
+    image.thumbnail((400, 400))
+    image.save(filepath, quality=90)
+    return image
 
 
 class Checkin(Document):
+    def image_downsize(self):
+        # Downsize the selfie image for thumbnails.
+
+        basepath = frappe.utils.get_site_path() + "/public"
+        old_filepath = basepath + self.selfie
+
+        if not self.selfie:
+            return
+
+        # Convert '/files/robin.hood-army.jpg' to '/files/robin.hood-army-small.jpg' by adding '-small'
+        file_url = "-small.".join(self.selfie.rsplit(".", 1))
+        new_filepath = basepath + file_url
+
+        if Path(old_filepath).exists():
+            # Copy existing original uploaded image (selfie) and then downsize it for thumbnail.
+            shutil.copy(old_filepath, new_filepath)
+
+            image = Image.open(new_filepath)
+            image.thumbnail((210, 210))
+            image.save(new_filepath, quality=90)
+
+            self.db_set("selfie_thumbnail", file_url, update_modified=False)
+
     def generate_certificate(self, checkin_count):
         """
         Generate a certificate after every 10 and 100 checkins to be sent to the respective robin.
@@ -47,7 +87,6 @@ class Checkin(Document):
             )
         ) as htmlfile:
             html_str = htmlfile.read()
-            filecontent = pdf_from_template(html_str, jinja_data)
             filecontent = pdfkit.from_string(
                 Template(html_str).render(**jinja_data),
                 None,
@@ -87,12 +126,13 @@ class Checkin(Document):
         if res and res[0]["count"] in [10, 100]:
             enqueue(self.generate_certificate, checkin_count=res[0]["count"])
 
+    def on_update(self):
+        self.image_downsize()
+
 
 @frappe.whitelist()
-def fetch_sub_chapter(email):
-    return frappe.db.get_value(
-        "Robin Chapter Mapping", {"user": email}, ["sub_chapter"]
-    )
+def fetch_chapter(email):
+    return frappe.db.get_value("Robin Chapter Mapping", {"user": email}, ["chapter"])
 
 
 @frappe.whitelist(allow_guest=True)

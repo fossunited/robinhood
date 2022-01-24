@@ -11,12 +11,14 @@
   "meals_served",
   "tags",
   "chapter",
-  "city"
+  "city",
+  "selfie_thumbnail"
  ],
  "fields": [
   {
    "fieldname": "user",
    "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "User",
    "options": "User",
    "read_only": 1
@@ -27,9 +29,12 @@
    "label": "Selfie"
   },
   {
+   "default": "1",
    "fieldname": "meals_served",
    "fieldtype": "Int",
-   "label": "Meals Served"
+   "label": "Meals Served",
+   "non_negative": 1,
+   "reqd": 1
   },
   {
    "fieldname": "tags",
@@ -41,18 +46,26 @@
    "fieldname": "chapter",
    "fieldtype": "Link",
    "label": "Chapter",
-   "options": "Robin Chapter Mapping"
+   "options": "Chapter",
+   "reqd": 1
   },
   {
    "fieldname": "city",
    "fieldtype": "Link",
    "label": "City",
-   "options": "City"
+   "options": "City",
+   "reqd": 1
+  },
+  {
+   "fieldname": "selfie_thumbnail",
+   "fieldtype": "Attach Image",
+   "hidden": 1,
+   "label": "Selfie Thumbnail"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2021-12-31 10:56:59.279179",
+ "modified": "2022-01-24 20:08:40.911220",
  "modified_by": "Administrator",
  "module": "Robinhood",
  "name": "Checkin",
@@ -73,5 +86,6 @@
  ],
  "sort_field": "modified",
  "sort_order": "DESC",
+ "states": [],
  "track_changes": 1
 }
