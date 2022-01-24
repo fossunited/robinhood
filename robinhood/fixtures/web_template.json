@@ -101,14 +101,14 @@
   "docstatus": 0,
   "doctype": "Web Template",
   "fields": [],
-  "modified": "2022-01-24 20:11:31.408941",
+  "modified": "2022-01-24 21:49:27.920999",
   "module": "Robinhood",
   "name": "Gallery",
   "parent": null,
   "parentfield": null,
   "parenttype": null,
   "standard": 0,
-  "template": "{% set args = frappe.form_dict %}\n{% if args %}\n    {% set images = frappe.db.sql(\"\"\"SELECT upu.first_name, c.selfie_thumbnail, c.creation, date(c.creation) as posting_date from `tabCheckin` c JOIN `tabUser Profile Update` upu on c.owner=upu.owner  WHERE  c.city = %(city)s and c.selfie is not null order by creation limit 60;\"\"\", args, as_dict=True    ) %}\n{% else %}\n    {%   set images = frappe.db.sql(\"\"\"SELECT upu.first_name, c.selfie_thumbnail, c.creation, date(c.creation) as posting_date from `tabCheckin` c JOIN `tabUser Profile Update` upu on c.owner=upu.owner  WHERE  c.selfie is not null order by creation limit 60;\"\"\", as_dict=True)%}\n{% endif %}\n\n<script>\n    \n    \n</script>\n\n\n<h2>Recent checkins</h2>\n<div style=\"display: flex;flex-direction:row;\">\n\n{% for image in images %}\n\n    <a target=\"_blank\" href={{ image.selfie_thumbnail }}>\n      <img src={{ image.selfie_thumbnail }}  width=\"200\" height=\"200\" class=\"img-thumbnail\" style=\"max-width:200;max-height:200; margin-right:5px\">\n      <p>{{image.first_name | capitalize }}</p>\n      <p style=\"color: grey; font-size:12px\">{{image.posting_date}}</p>\n    </a>\n{% endfor %}\n\n\n</div>\n",
+  "template": "{% set args = frappe.form_dict %}\n{% if args %}\n    {% set images = frappe.db.sql(\"\"\"SELECT u.first_name, c.selfie_thumbnail, c.creation, date(c.creation) as posting_date from `tabCheckin` c JOIN `tabUser` u on c.owner=u.name  WHERE  c.city = %(city)s and c.selfie is not null order by creation limit 60;\"\"\", args, as_dict=True) %}\n{% else %}\n    {%   set images = frappe.db.sql(\"\"\"SELECT u.first_name, c.selfie_thumbnail, c.creation, date(c.creation) as posting_date from `tabCheckin` c JOIN `tabUser` u on c.owner=u.name  WHERE  c.selfie is not null order by creation limit 60;\"\"\", as_dict=True)%}\n{% endif %}\n\n<script>\n    \n    \n</script>\n\n\n<h2>Recent checkins</h2>\n<div style=\"display: flex;flex-direction:row;\">\n\n{% for image in images %}\n\n    <a target=\"_blank\" href={{ image.selfie_thumbnail }}>\n      <img src={{ image.selfie_thumbnail }}  width=\"200\" height=\"200\" class=\"img-thumbnail\" style=\"max-width:200;max-height:200; margin-right:5px\">\n      <p>{{image.first_name | capitalize }}</p>\n      <p style=\"color: grey; font-size:12px\">{{image.posting_date}}</p>\n    </a>\n{% endfor %}\n\n\n</div>\n",
   "type": "Section"
  }
 ]
