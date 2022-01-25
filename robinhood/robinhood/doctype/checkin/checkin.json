@@ -46,8 +46,7 @@
    "fieldname": "chapter",
    "fieldtype": "Link",
    "label": "Chapter",
-   "options": "Chapter",
-   "reqd": 1
+   "options": "Chapter"
   },
   {
    "fieldname": "city",
@@ -65,7 +64,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-01-24 20:08:40.911220",
+ "modified": "2022-01-25 13:09:31.540768",
  "modified_by": "Administrator",
  "module": "Robinhood",
  "name": "Checkin",
