@@ -7,21 +7,16 @@
 })();
 
 function checkMapping() {
-  if (
-    window.location.href.split("/").at(-1) !== "profile-update" &&
-    frappe.session &&
-    frappe.session.user !== "Guest"
-  ) {
     frappe.call({
       method: "robinhood.api.check_mapping.mapping",
       callback: function (r) {
         console.log(r.message);
-        if (r.message.length === 0) {
+        if (r.message === 0) {
           window.location = "/profile-update";
         }
       },
     });
-  }
+
 }
 window.onload = function () {
   checkMapping();

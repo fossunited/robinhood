@@ -2,7 +2,7 @@
  {
   "breadcrumbs": null,
   "content_type": "Page Builder",
-  "context_script": null,
+  "context_script": "no_cache = 1\nno_sitemap = 1",
   "css": null,
   "docstatus": 0,
   "doctype": "Web Page",
@@ -20,7 +20,7 @@
   "meta_description": null,
   "meta_image": null,
   "meta_title": null,
-  "modified": "2021-12-30 15:48:08.018408",
+  "modified": "2022-02-03 21:45:45.760788",
   "module": "Robinhood",
   "name": "recent-checkins",
   "page_blocks": [
@@ -132,7 +132,7 @@
  {
   "breadcrumbs": null,
   "content_type": "Page Builder",
-  "context_script": null,
+  "context_script": "no_cache = 1\nno_sitemap = 1",
   "css": null,
   "docstatus": 0,
   "doctype": "Web Page",
@@ -150,7 +150,7 @@
   "meta_description": null,
   "meta_image": null,
   "meta_title": null,
-  "modified": "2022-01-21 19:53:17.163334",
+  "modified": "2022-02-04 11:17:46.397666",
   "module": "Robinhood",
   "name": "homepage",
   "page_blocks": [
@@ -165,10 +165,10 @@
     "parentfield": "page_blocks",
     "parenttype": "Web Page",
     "web_template": "Markdown",
-    "web_template_values": "{\"content\":\"# Checkin portal\\n\\nWelcome to the Robin Hood Army Robin checkin portal. Robins going out on food distribution drives can do a self-checkin on this portal while in the field. This portal displays checkin trends and statistics across cities and chapters.\",\"align\":\"Left\"}"
+    "web_template_values": "{\"content\":\"Welcome to Robin Hood Army CheckIn! Whilst going for RHA drives, any Robin can self checkin on this platform. \\n\\nGet your Robin badges after checking in\ud83d\udd25:<br>\\n 10 Drives: Robin Ninja<br>\\n100 Drives: Robin Centurion<br>\\n\\n<a href=\\\"/checkin?new=1\\\">CheckIn Now!</a><br>\\n\\nYou can see what your fellow Robins across the world are upto here:\\n\",\"align\":\"Left\"}"
    },
    {
-    "add_bottom_padding": 0,
+    "add_bottom_padding": 1,
     "add_container": 1,
     "add_shade": 0,
     "add_top_padding": 1,
@@ -177,14 +177,14 @@
     "parent": "homepage",
     "parentfield": "page_blocks",
     "parenttype": "Web Page",
-    "web_template": "checkins-chart",
+    "web_template": "top-robins",
     "web_template_values": null
    },
    {
     "add_bottom_padding": 0,
     "add_container": 1,
     "add_shade": 0,
-    "add_top_padding": 1,
+    "add_top_padding": 0,
     "css_class": null,
     "hide_block": 0,
     "parent": "homepage",
@@ -203,20 +203,20 @@
     "parent": "homepage",
     "parentfield": "page_blocks",
     "parenttype": "Web Page",
-    "web_template": "top-robins",
+    "web_template": "Gallery",
     "web_template_values": null
    },
    {
     "add_bottom_padding": 1,
     "add_container": 1,
     "add_shade": 0,
-    "add_top_padding": 1,
+    "add_top_padding": 0,
     "css_class": null,
     "hide_block": 0,
     "parent": "homepage",
     "parentfield": "page_blocks",
     "parenttype": "Web Page",
-    "web_template": "Gallery",
+    "web_template": "checkins-chart",
     "web_template_values": null
    }
   ],

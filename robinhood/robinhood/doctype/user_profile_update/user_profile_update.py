@@ -9,10 +9,13 @@ class Userprofileupdate(Document):
     def on_update(self):
         user = frappe.get_doc("User", frappe.session.user)
         user.first_name = self.first_name
-        user.middle_name = self.middle_name
-        user.last_name = self.last_name
-        user.phone = self.phone
-        user.mobile_no = self.mobile_no
+        if self.last_name:
+            user.last_name = self.last_name
+        if self.mobile_no:
+            user.mobile_no = self.mobile_no
+        if self.profile_picture:
+            user.user_image = self.profile_picture
+
         user.save(ignore_permissions=True)
 
         frappe.get_doc({

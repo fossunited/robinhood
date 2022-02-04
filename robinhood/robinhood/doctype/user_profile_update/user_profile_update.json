@@ -12,7 +12,8 @@
   "last_name",
   "phone",
   "mobile_no",
-  "city"
+  "city",
+  "profile_picture"
  ],
  "fields": [
   {
@@ -45,11 +46,16 @@
    "fieldname": "mobile_no",
    "fieldtype": "Data",
    "label": "Mobile Number"
+  },
+  {
+   "fieldname": "profile_picture",
+   "fieldtype": "Attach Image",
+   "label": "Profile Picture"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-01-01 11:26:57.239835",
+ "modified": "2022-02-03 20:34:30.777546",
  "modified_by": "Administrator",
  "module": "Robinhood",
  "name": "User profile update",
@@ -71,5 +77,6 @@
  ],
  "sort_field": "modified",
  "sort_order": "DESC",
+ "states": [],
  "track_changes": 1
 }
