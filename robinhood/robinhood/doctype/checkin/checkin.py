@@ -2,9 +2,12 @@
 # For license information, please see license.txt
 
 
+import json
 import os
 import shutil
 import time
+from datetime import datetime
+from hashlib import blake2b
 from pathlib import Path
 
 import frappe
@@ -13,7 +16,6 @@ from frappe.model.document import Document
 from frappe.utils import get_url
 from frappe.utils.background_jobs import enqueue
 from jinja2 import Template
-from pdf_text_overlay import pdf_from_template
 from PIL import Image
 
 
@@ -21,7 +23,6 @@ def image_upsize(file_doc, method):
     """
     Upsize the uploaded selfies to a standard size.
     """
-
     filepath = frappe.utils.get_site_path() + "/public" + file_doc.file_url
     image = Image.open(filepath)
 
@@ -31,6 +32,14 @@ def image_upsize(file_doc, method):
 
 
 class Checkin(Document):
+    def generate_digital_signature(self, params):
+        h = blake2b(
+            key="eme+Rw5@Zl@pV2?DX56v89yB5L*#mVP>-Yq*eKK+SRcd0!-&".encode(),
+            digest_size=14,
+        )
+        h.update(json.dumps(params).encode("utf-8"))
+        return h.hexdigest()
+
     def image_downsize(self):
         # Downsize the selfie image for thumbnails.
 
@@ -111,6 +120,16 @@ class Checkin(Document):
                 attachments=[certificate_pdf],
                 delayed=False,
             )
+
+            # Store log of the certificate issued.
+            doc = frappe.new_doc("Robin Certificate Log")
+            doc.date_of_issue = datetime.now()
+            doc.robin = self.owner
+            doc.type_of_certificate = checkin_count
+            doc.certificate_id = self.generate_digital_signature(
+                [doc.robin, str(doc.date_of_issue), checkin_count]
+            )
+            doc.save()
 
     def after_insert(self):
         res = frappe.db.sql(
