@@ -1,0 +1,62 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2022-02-04 19:02:53.790275",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "robin",
+  "type_of_certificate",
+  "certificate_id",
+  "date_of_issue"
+ ],
+ "fields": [
+  {
+   "fieldname": "robin",
+   "fieldtype": "Link",
+   "label": "Robin",
+   "options": "User"
+  },
+  {
+   "fieldname": "type_of_certificate",
+   "fieldtype": "Select",
+   "label": "Type of certificate",
+   "options": "10\n100"
+  },
+  {
+   "fieldname": "certificate_id",
+   "fieldtype": "Data",
+   "label": "Certificate ID"
+  },
+  {
+   "fieldname": "date_of_issue",
+   "fieldtype": "Datetime",
+   "label": "Date of issue"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2022-02-04 19:02:53.790275",
+ "modified_by": "Administrator",
+ "module": "Robinhood",
+ "name": "Robin Certificate Log",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
