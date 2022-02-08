@@ -12,7 +12,8 @@
   "tags",
   "chapter",
   "city",
-  "selfie_thumbnail"
+  "selfie_thumbnail",
+  "students_taught"
  ],
  "fields": [
   {
@@ -60,11 +61,16 @@
    "fieldtype": "Attach Image",
    "hidden": 1,
    "label": "Selfie Thumbnail"
+  },
+  {
+   "fieldname": "students_taught",
+   "fieldtype": "Int",
+   "label": "Students taught"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-01-25 13:09:31.540768",
+ "modified": "2022-02-08 11:21:50.120226",
  "modified_by": "Administrator",
  "module": "Robinhood",
  "name": "Checkin",
