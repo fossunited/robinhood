@@ -26,7 +26,7 @@ def image_upsize(file_doc, method):
     filepath = frappe.utils.get_site_path() + "/public" + file_doc.file_url
     image = Image.open(filepath)
 
-    image.thumbnail((400, 400))
+    image.thumbnail((400, 400), Image.ANTIALIAS)
     image.save(filepath, quality=90)
     return image
 
