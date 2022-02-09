@@ -3,14 +3,14 @@
   "docstatus": 0,
   "doctype": "Web Template",
   "fields": [],
-  "modified": "2022-02-08 12:00:15.920004",
+  "modified": "2022-02-08 13:35:07.555681",
   "module": "Robinhood",
   "name": "all-cities",
   "parent": null,
   "parentfield": null,
   "parenttype": null,
   "standard": 0,
-  "template": "{% set cities = frappe.db.sql(\"\"\"SELECT c.name FROM `tabCity` as c order by c.name\"\"\", as_dict=True)%}\n\n<label for=\"city\">Choose a city:</label>\n\n<select name=\"city\" id=\"city\" class=\"form-control\" style=\"width:20%; margin-bottom: 25px;\">\n    <option></option>\n    {% for city in cities %}\n   <option value=\"{{city.name}}\">{{city.name}}</option>\n   {% endfor %}\n</select>\n\n",
+  "template": "{% set cities = frappe.db.sql(\"\"\"SELECT c.name FROM `tabCity` as c order by c.name\"\"\", as_dict=True)%}\n<div class='container'>\n<label for=\"city\">Choose a city:</label>\n\n<select name=\"city\" id=\"city\" class=\"form-control\" style=\"width:20%; margin-bottom: 25px;\">\n    <option></option>\n    {% for city in cities %}\n   <option value=\"{{city.name}}\">{{city.name}}</option>\n   {% endfor %}\n</select>\n    \n</div>\n\n",
   "type": "Section"
  },
  {
@@ -31,14 +31,14 @@
   "docstatus": 0,
   "doctype": "Web Template",
   "fields": [],
-  "modified": "2022-02-08 12:02:06.332506",
+  "modified": "2022-02-08 13:34:11.914581",
   "module": "Robinhood",
   "name": "top-cities",
   "parent": null,
   "parentfield": null,
   "parenttype": null,
   "standard": 0,
-  "template": "{% set cities = frappe.db.sql(\"\"\" select count(c.name) as drives, c.city from `tabCheckin` as c group by c.city\"\"\", as_dict=True) %}\n<div>\n <h2>Top Active Cities</h2>\n    <div class=\"dheight\">\n        No. of checkins across the cities in the last 60 days.\n    </div>\n</div>\n<div class=\"row dheight\">\n    {% for city in cities %}\n    <div class=\"col-md-6\">\n        <div class=\"row dheight\">\n            <div class=\"col-md-3\">\n                <a href = '/city/{{ city.city }}'>{{ loop.index }}. {{ city.city }}</a>\n            </div>\n            <div class=\"col-md-9\">\n                <div style='background-color:green;width:70%;height: 5px;border-radius: 3px;'></div>\n                <div>{{ frappe.format(city.drives) }}</div>\n            </div>\n        </div>\n    </div>\n    {% endfor %}\n</div>\n<div class=\"row dheight\">\n</div>\n\n",
+  "template": "{% set cities = frappe.db.sql(\"\"\" select count(c.name) as drives, c.city from `tabCheckin` as c group by c.city\"\"\", as_dict=True) %}\n<div>\n <h2>Top Active Cities</h2>\n    <div class=\"dheight\">\n        No. of checkins across the cities in the last 60 days.\n    </div>\n</div>\n<div class=\"row dheight\">\n    {% for city in cities %}\n    <div class=\"col-md-6\">\n        <div class=\"row dheight\">\n            <div class=\"col-md-3\">\n                <a href = '/city/{{ city.city }}'>{{ loop.index }}. {{ city.city }}</a>\n            </div>\n            <div class=\"col-md-9\">\n                <div style='background-color:green;width:70%;height: 5px;border-radius: 3px;'></div>\n                <div>{{ frappe.format(city.drives) }}</div>\n            </div>\n        </div>\n    </div>\n    {% endfor %}\n</div>\n\n",
   "type": "Section"
  },
  {
