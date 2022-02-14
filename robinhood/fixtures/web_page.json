@@ -150,7 +150,7 @@
   "meta_description": null,
   "meta_image": null,
   "meta_title": null,
-  "modified": "2022-02-09 13:56:25.298150",
+  "modified": "2022-02-14 12:12:57.948308",
   "module": "Robinhood",
   "name": "homepage",
   "page_blocks": [
@@ -197,7 +197,7 @@
     "add_bottom_padding": 0,
     "add_container": 1,
     "add_shade": 0,
-    "add_top_padding": 0,
+    "add_top_padding": 1,
     "css_class": null,
     "hide_block": 0,
     "parent": "homepage",
@@ -207,10 +207,10 @@
     "web_template_values": null
    },
    {
-    "add_bottom_padding": 1,
+    "add_bottom_padding": 0,
     "add_container": 1,
     "add_shade": 0,
-    "add_top_padding": 1,
+    "add_top_padding": 0,
     "css_class": null,
     "hide_block": 0,
     "parent": "homepage",
