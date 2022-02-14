@@ -32,7 +32,7 @@ def image_upsize(file_doc, method):
 
 
 class Checkin(Document):
-    def validate():
+    def validate(self):
         try:
             checkin, = frappe.db.sql(
                 """SELECT name
