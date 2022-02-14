@@ -36,7 +36,7 @@ class Checkin(Document):
         try:
             checkin, = frappe.db.sql(
                 """SELECT name
-                FROM "tabCheckin"
+                FROM `tabCheckin`
                 WHERE owner = %(owner)s and date(creation) = date(now())
                 """, {"owner": frappe.session.user}, as_dict=True
             )
