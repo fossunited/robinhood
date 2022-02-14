@@ -33,16 +33,15 @@ def image_upsize(file_doc, method):
 
 class Checkin(Document):
     def validate(self):
-        try:
-            checkin, = frappe.db.sql(
+
+        if frappe.db.sql(
                 """SELECT name
-                FROM `tabCheckin`
-                WHERE owner = %(owner)s and date(creation) = date(now())
-                """, {"owner": frappe.session.user}, as_dict=True
-            )
+            FROM `tabCheckin`
+            WHERE owner = %(owner)s and date(creation) = date(now())
+            """, {"owner": frappe.session.user}, as_dict=True
+        ):
             frappe.throw("Not allowed to check-in multiple times during the day")
-        except Exception as e:
-            pass
+
 
     def generate_digital_signature(self, params):
         h = blake2b(
