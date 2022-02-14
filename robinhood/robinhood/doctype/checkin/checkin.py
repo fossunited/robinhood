@@ -38,7 +38,7 @@ class Checkin(Document):
                 """SELECT name
                 FROM "tabCheckin"
                 WHERE owner = %(owner)s and date(creation) = date(now())
-                """, as_dict=True
+                """, {"owner": frappe.session.user}, as_dict=True
             )
             frappe.throw("Not allowed to check-in multiple times during the day")
         except Exception as e:
