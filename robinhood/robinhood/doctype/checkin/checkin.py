@@ -78,16 +78,19 @@ class Checkin(Document):
         """
         Generate a certificate after every 10 and 100 checkins to be sent to the respective robin.
         """
+        certificate_id = self.store_certificate_log(checkin_count)
+
         jinja_data = {
-            "robin_name": frappe.db.get_value(
-                "User", {"email": self.owner}, ["first_name"]
-            ),
+            "robin_name": (
+                frappe.db.get_value("User", {"email": self.owner}, ["first_name"]) or ""
+            ).capitalize(),
             "base_url": get_url(),
             # "base_url": "http://0.0.0.0:8010",
             "robin_location": frappe.db.get_value(
                 "Robin Chapter Mapping", {"user": self.owner}, ["chapter"]
             ),
             "certificate_date": time.strftime("%d %B %Y"),  # 12 December 2022
+            "certificate_id": certificate_id,
         }
 
         certificate_filename = None
@@ -131,16 +134,6 @@ class Checkin(Document):
                 attachments=[certificate_pdf],
                 delayed=False,
             )
-
-            # Store log of the certificate issued.
-            doc = frappe.new_doc("Robin Certificate Log")
-            doc.date_of_issue = datetime.now()
-            doc.robin = self.owner
-            doc.type_of_certificate = checkin_count
-            doc.certificate_id = self.generate_digital_signature(
-                [doc.robin, str(doc.date_of_issue), checkin_count]
-            )
-            doc.save()
 
     def after_insert(self):
         res = frappe.db.sql(
