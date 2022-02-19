@@ -73,14 +73,14 @@
   "docstatus": 0,
   "doctype": "Web Template",
   "fields": [],
-  "modified": "2022-02-14 12:01:31.677766",
+  "modified": "2022-02-19 16:54:03.031835",
   "module": "Robinhood",
   "name": "top-robins",
   "parent": null,
   "parentfield": null,
   "parenttype": null,
   "standard": 0,
-  "template": "\n{% set args = frappe.form_dict %}\n{% if args %}\n    {% set checkins = frappe.db.sql(\"\"\"SELECT c.name, ifnull(up.profile_picture, '/assets/robinhood/images/robinhood_alt.png') as profile_thumbnail, c.creation, up.first_name as owner, c.city as chapter, count(*) as checkin_count from `tabCheckin` c  inner join `tabUser profile update` as up on c.owner = up.owner WHERE  c.city = %(city)s group by c.owner order by meals_served limit 10\"\"\", args, as_dict=True    ) %}\n{% else %}\n    {%   set checkins = frappe.db.sql(\"\"\"SELECT c.name, ifnull(up.profile_picture, '/assets/robinhood/images/robinhood_alt.png') as profile_thumbnail, c.creation, up.first_name as owner, c.city as chapter, count(*) as checkin_count from `tabCheckin` c inner join `tabUser profile update` as up on c.owner = up.owner group by c.owner, c.city order by meals_served  limit 10\"\"\", as_dict=True)%}\n{% endif %}\n\n\n<h2>Top Active Robins</h2>\n    <div>Robins with the highest checked in drives in the last 60 days.</div>\n\n<table>\n        <tr>\n            <th class='table-header'></th>\n            <th class='table-header'>Name</th>\n            <th class='table-header'>Chapter</th>\n            <th class='table-header'>Drives</th>\n        </tr>\n        {% for checkin in checkins %}\n        \n            <tr>\n                <td class='text-center'><span><img src={{checkin.profile_thumbnail}} width='90px' height='90px' style=\"border-radius: 50%;object-fit:cover;\"> </span></td>\n                <td class='border-bottom'>{{ checkin.owner }}</td>\n                <td class='border-bottom'> <a href = '/city/{{ checkin.chapter }}'>{{ checkin.chapter }}</a> </td>\n                <td class='border-bottom'>{{ frappe.format(checkin.checkin_count) }}</td>\n            </tr>\n        {% endfor %}\n    </table>\n    ",
+  "template": "\n{% set args = frappe.form_dict %}\n{% if args %}\n    {% set checkins = frappe.db.sql(\"\"\"SELECT c.name, ifnull(up.user_image, '/assets/robinhood/images/robinhood_alt.png') as profile_thumbnail, c.creation, up.first_name as owner, c.city as chapter, count(*) as checkin_count from `tabCheckin` c  inner join `tabUser` as up on c.owner = up.name WHERE  c.city = %(city)s group by c.owner order by meals_served limit 10\"\"\", args, as_dict=True    ) %}\n{% else %}\n    {%   set checkins = frappe.db.sql(\"\"\"SELECT c.name, ifnull(up.user_image, '/assets/robinhood/images/robinhood_alt.png') as profile_thumbnail, c.creation, up.first_name as owner, c.city as chapter, count(*) as checkin_count from `tabCheckin` c inner join `tabUser` as up on c.owner = up.name group by c.owner, c.city order by meals_served  limit 10\"\"\", as_dict=True)%}\n{% endif %}\n\n\n<h2>Top Active Robins</h2>\n    <div>Robins with the highest checked in drives in the last 60 days.</div>\n\n<table>\n        <tr>\n            <th class='table-header'></th>\n            <th class='table-header'>Name</th>\n            <th class='table-header'>Chapter</th>\n            <th class='table-header'>Drives</th>\n        </tr>\n        {% for checkin in checkins %}\n        \n            <tr>\n                <td class='text-center'><span><img src={{checkin.profile_thumbnail}} width='90px' height='90px' style=\"border-radius: 50%;object-fit:cover;\"> </span></td>\n                <td class='border-bottom'>{{ checkin.owner }}</td>\n                <td class='border-bottom'> <a href = '/city/{{ checkin.chapter }}'>{{ checkin.chapter }}</a> </td>\n                <td class='border-bottom'>{{ frappe.format(checkin.checkin_count) }}</td>\n            </tr>\n        {% endfor %}\n    </table>\n    ",
   "type": "Section"
  },
  {
@@ -115,14 +115,14 @@
   "docstatus": 0,
   "doctype": "Web Template",
   "fields": [],
-  "modified": "2022-02-15 10:25:26.460527",
+  "modified": "2022-02-15 12:28:37.750327",
   "module": "Robinhood",
   "name": "Gallery",
   "parent": null,
   "parentfield": null,
   "parenttype": null,
   "standard": 0,
-  "template": "{% set args = frappe.form_dict %}\n{% if args %}\n    {% set images = frappe.db.sql(\"\"\"SELECT u.first_name, c.selfie_thumbnail, c.creation, date(c.creation) as posting_date from `tabCheckin` c JOIN `tabUser` u on c.owner=u.name  WHERE  c.city = %(city)s and c.selfie_thumbnail is not null order by creation desc limit 10;\"\"\", args, as_dict=True) %}\n{% else %}\n    {%   set images = frappe.db.sql(\"\"\"SELECT u.first_name, c.selfie_thumbnail, c.creation, date(c.creation) as posting_date, c.city from `tabCheckin` c JOIN `tabUser` u on c.owner=u.name  WHERE  c.selfie_thumbnail is not null order by creation desc limit 10;\"\"\", as_dict=True)%}\n{% endif %}\n\n<script>\n    \n    \n</script>\n\n\n<h2>Recent checkIns</h2>\n<div style=\"display: flex;flex-direction:row;\">\n<div class=\"row\">\n{% for image in images %}\n\n   <div class=\"col-sm-3 col-md-2\">\n        <a href=\"#\" class=\"thumbnail\"><img src={{ image.selfie_thumbnail }} style=\"width:100px;height:100px; margin-right:5px\"/>\n        <p>{{image.first_name | capitalize }}</p>\n      <span>{{image.city | capitalize }}</span>\n      <p style=\"color: grey; font-size:12px\">{{image.posting_date}}</p></a>\n      </div>\n{% endfor %}\n\n\n</div>\n</div>\n\n",
+  "template": "{% set args = frappe.form_dict %}\n{% if args %}\n    {% set images = frappe.db.sql(\"\"\"SELECT u.first_name, c.selfie_thumbnail, c.creation, date(c.creation) as posting_date from `tabCheckin` c JOIN `tabUser` u on c.owner=u.name  WHERE  c.city = %(city)s and c.selfie_thumbnail is not null order by creation desc limit 10;\"\"\", args, as_dict=True) %}\n{% else %}\n    {%   set images = frappe.db.sql(\"\"\"SELECT u.first_name, c.selfie_thumbnail, c.creation, date(c.creation) as posting_date, c.city from `tabCheckin` c JOIN `tabUser` u on c.owner=u.name  WHERE  c.selfie_thumbnail is not null order by creation desc limit 10;\"\"\", as_dict=True)%}\n{% endif %}\n\n<script>\n    \n    \n</script>\n\n\n<h2>Recent checkIns</h2>\n<div style=\"display: flex;flex-direction:row;\">\n<div class=\"row\">\n{% for image in images %}\n\n   <div class=\"col-sm-3 col-md-2\">\n        <a href=\"#\" class=\"thumbnail\"><img src={{ image.selfie_thumbnail }}/>\n        <p>{{image.first_name | capitalize }}</p>\n      <span>{{image.city | capitalize }}</span>\n      <p style=\"color: grey; font-size:12px\">{{image.posting_date}}</p></a>\n      </div>\n{% endfor %}\n\n\n</div>\n</div>\n\n",
   "type": "Section"
  }
 ]
