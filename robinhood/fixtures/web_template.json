@@ -3,14 +3,14 @@
   "docstatus": 0,
   "doctype": "Web Template",
   "fields": [],
-  "modified": "2022-02-14 12:16:55.013713",
+  "modified": "2022-02-19 17:29:41.486270",
   "module": "Robinhood",
   "name": "all-cities",
   "parent": null,
   "parentfield": null,
   "parenttype": null,
   "standard": 0,
-  "template": "{% set cities = frappe.db.sql(\"\"\"SELECT c.name FROM `tabCity` as c order by c.name\"\"\", as_dict=True)%}\n<div class='row' style=\"margin-bottom: 4rem;\">\n    <div class=\"col-md-3\">\n    \n<label for=\"city\">Choose a city:</label>\n\n<select name=\"city\" id=\"city\" class=\"form-control\">\n    <option></option>\n    {% for city in cities %}\n   <option value=\"{{city.name}}\">{{city.name}}</option>\n   {% endfor %}\n</select>\n    \n</div>\n\n</div>",
+  "template": "{% set cities = frappe.db.sql(\"\"\"SELECT c.name FROM `tabCity` as c order by c.name\"\"\", as_dict=True)%}\n<div class='row city' style=\"margin-bottom: 4rem;\">\n    <div class=\"col-md-3\">\n    \n<label for=\"city\">Choose a city:</label>\n\n<select name=\"city\" id=\"city\" class=\"form-control\">\n    <option></option>\n    {% for city in cities %}\n   <option value=\"{{city.name}}\">{{city.name}}</option>\n   {% endfor %}\n</select>\n    \n</div>\n\n</div>",
   "type": "Section"
  },
  {
