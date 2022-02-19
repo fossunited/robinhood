@@ -162,7 +162,7 @@ def fetch_chapter(email):
 def checkins(city):
     """Checkins."""
     if city:
-        query = """SELECT sum(c.meals_served), date(c.creation)
+        query = """SELECT count(c.name), date(c.creation)
             from `tabCheckin` c
 
             WHERE c.creation >= now() - INTERVAL 60 day
@@ -171,7 +171,7 @@ def checkins(city):
 
         """
     else:
-        query = """SELECT sum(meals_served), date(creation)
+        query = """SELECT count(name), date(creation)
             from `tabCheckin`
             WHERE creation >= now() - INTERVAL 60 day
             group by date(creation) order by date(creation)"""
