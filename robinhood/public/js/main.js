@@ -20,6 +20,7 @@ function checkMapping() {
         });
     }
 }
+
 window.onload = function() {
     checkMapping();
 };
