@@ -10,8 +10,7 @@ function checkMapping() {
   frappe.call({
     method: "robinhood.api.check_mapping.mapping",
     callback: function (r) {
-      console.log(r.message);
-      if (r.message === false) {
+      if (r.message === true) {
         window.location = "/profile-update";
       }
     },
