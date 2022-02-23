@@ -15,7 +15,7 @@ function checkMapping() {
       method: "robinhood.api.check_mapping.mapping",
       callback: function (r) {
         console.log(r.message);
-        if (r.message === 0) {
+        if (r.message === false) {
           window.location = "/profile-update";
         }
       },
