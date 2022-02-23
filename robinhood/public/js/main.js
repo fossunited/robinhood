@@ -7,9 +7,9 @@
 })();
 
 function checkMapping() {
-    if (
+    if(
         window.location.href.split("/").at(-1).split('?').at(0) !== "profile-update"
-    ) {
+    ){
         frappe.call({
             method: "robinhood.api.check_mapping.mapping",
             callback: function(r) {
