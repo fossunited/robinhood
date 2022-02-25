@@ -13,7 +13,7 @@ from pathlib import Path
 import frappe
 import pdfkit
 from frappe.model.document import Document
-from frappe.utils import get_url
+from frappe.utils import get_url, now
 from frappe.utils.background_jobs import enqueue
 from jinja2 import Template
 from PIL import Image
@@ -33,15 +33,15 @@ def image_upsize(file_doc, method):
 
 class Checkin(Document):
     def validate(self):
-
         if frappe.db.sql(
-                """SELECT name
+            """SELECT name
             FROM `tabCheckin`
-            WHERE owner = %(owner)s and date(creation) = date(now())
-            """, {"owner": frappe.session.user}, as_dict=True
+            WHERE owner = %(owner)s and date(creation) = date(%(_now)s)
+            """,
+            {"owner": frappe.session.user, "_now": now()},
+            as_dict=True,
         ):
             frappe.throw("Not allowed to check-in multiple times during the day")
-
 
     def generate_digital_signature(self, params):
         h = blake2b(
