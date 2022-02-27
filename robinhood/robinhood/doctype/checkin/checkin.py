@@ -43,6 +43,19 @@ class Checkin(Document):
         ):
             frappe.throw("Not allowed to check-in multiple times during the day")
 
+    def store_certificate_log(self, checkin_count):
+        # Store log of the certificate issued.
+        doc = frappe.new_doc("Robin Certificate Log")
+        doc.date_of_issue = datetime.now()
+        doc.robin = self.owner
+        doc.type_of_certificate = checkin_count
+        doc.certificate_id = self.generate_digital_signature(
+            [doc.robin, str(doc.date_of_issue), checkin_count]
+        )
+        doc.save()
+        frappe.db.commit()
+        return doc.certificate_id
+
     def generate_digital_signature(self, params):
         h = blake2b(
             key="eme+Rw5@Zl@pV2?DX56v89yB5L*#mVP>-Yq*eKK+SRcd0!-&".encode(),
@@ -85,7 +98,6 @@ class Checkin(Document):
                 frappe.db.get_value("User", {"email": self.owner}, ["first_name"]) or ""
             ).capitalize(),
             "base_url": get_url(),
-            # "base_url": "http://0.0.0.0:8010",
             "robin_location": frappe.db.get_value(
                 "Robin Chapter Mapping", {"user": self.owner}, ["chapter"]
             ),
