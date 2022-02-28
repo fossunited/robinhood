@@ -46,13 +46,18 @@ class Checkin(Document):
     def store_certificate_log(self, checkin_count):
         # Store log of the certificate issued.
         doc = frappe.new_doc("Robin Certificate Log")
-        doc.date_of_issue = datetime.now()
-        doc.robin = self.owner
-        doc.type_of_certificate = checkin_count
+        doc.db_set("date_of_issue", datetime.now())
+        doc.db_set("robin", self.owner)
+        doc.db_set("type_of_certificate", checkin_count)
         doc.certificate_id = self.generate_digital_signature(
             [doc.robin, str(doc.date_of_issue), checkin_count]
         )
-        doc.save()
+        doc.db_set(
+            "certificate_id",
+            self.generate_digital_signature(
+                [doc.robin, str(doc.date_of_issue), checkin_count]
+            ),
+        )
         frappe.db.commit()
         return doc.certificate_id
 
