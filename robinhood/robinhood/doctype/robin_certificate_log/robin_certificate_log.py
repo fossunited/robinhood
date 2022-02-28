@@ -8,6 +8,7 @@ from robinhood.robinhood.doctype.checkin.checkin import Checkin
 
 class RobinCertificateLog(Document):
     def before_insert(self):
+        # This should be only triggered when certificate log created from the UI
         if not getattr(self, "from_checkin", None):
             c = frappe.new_doc("Checkin")
             c.owner = self.robin
