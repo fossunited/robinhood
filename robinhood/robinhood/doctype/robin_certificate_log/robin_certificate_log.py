@@ -8,6 +8,7 @@ from robinhood.robinhood.doctype.checkin.checkin import Checkin
 
 class RobinCertificateLog(Document):
     def before_insert(self):
-        c = frappe.new_doc("Checkin")
-        c.owner = self.robin
-        c.generate_certificate(int(self.type_of_certificate))
+        if not getattr(self, "from_checkin", None):
+            c = frappe.new_doc("Checkin")
+            c.owner = self.robin
+            c.generate_certificate(int(self.type_of_certificate))
