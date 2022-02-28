@@ -1,7 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
- "creation": "2022-02-04 19:02:53.790275",
+ "creation": "2022-02-25 16:23:40.457837",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
@@ -27,17 +27,19 @@
   {
    "fieldname": "certificate_id",
    "fieldtype": "Data",
-   "label": "Certificate ID"
+   "label": "Certificate ID",
+   "read_only": 1
   },
   {
    "fieldname": "date_of_issue",
    "fieldtype": "Datetime",
-   "label": "Date of issue"
+   "label": "Date of issue",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-02-04 19:02:53.790275",
+ "modified": "2022-02-28 11:01:00.535626",
  "modified_by": "Administrator",
  "module": "Robinhood",
  "name": "Robin Certificate Log",
