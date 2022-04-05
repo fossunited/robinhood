@@ -19,9 +19,9 @@ def update(doc, method=None):
 def fetch_profile_details():
     res = frappe.db.sql(
         """
-    SELECT first_name, last_name, mobile_no, city, profile_picture
-    FROM `tabUser profile update`
-    WHERE owner=%s
+    SELECT first_name, last_name, mobile_no, location, user_image
+    FROM `tabUser`
+    WHERE email=%s
     """,
         [frappe.session.user],
     )
