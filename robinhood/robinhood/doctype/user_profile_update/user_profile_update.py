@@ -15,11 +15,15 @@ class Userprofileupdate(Document):
             user.mobile_no = self.mobile_no
         if self.profile_picture:
             user.user_image = self.profile_picture
+        if self.city:
+            user.location = self.city
 
         user.save(ignore_permissions=True)
 
-        frappe.get_doc({
-            "doctype": "Robin Chapter Mapping",
-            "chapter": self.city,
-            "user": frappe.session.user
-        }).save(ignore_permissions=True)
+        frappe.get_doc(
+            {
+                "doctype": "Robin Chapter Mapping",
+                "chapter": self.city,
+                "user": frappe.session.user,
+            }
+        ).save(ignore_permissions=True)
