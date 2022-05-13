@@ -14,4 +14,4 @@ def username(doc, method=None):
     while(frappe.db.get_value("User", {"username": username}, "name")):
         username = ''.join(random.choice(chars) for _ in range(size))
 
-    doc.username = username
+    doc.username = username.upper()
