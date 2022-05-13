@@ -5,11 +5,14 @@ import string
 import random
 
 
-def set_username(doc, method=None):
+def execute(doc, method=None):
     """Update username."""
     size = 6
     chars = string.ascii_uppercase + string.digits
-    userlist = frappe.db.get_user("SELECT name FROM `tabUser`", as_dict=True)
+    userlist = frappe.db.get_user(
+        "SELECT name FROM `tabUser` WHERE username is null",
+        as_dict=True
+    )
 
     for user in userlist:
         user_doc = frappe.get_doc("User", user.name)
