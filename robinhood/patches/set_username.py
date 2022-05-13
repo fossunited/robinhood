@@ -9,7 +9,7 @@ def execute():
     """Update username."""
     size = 6
     chars = string.ascii_uppercase + string.digits
-    userlist = frappe.db.get_user(
+    userlist = frappe.db.sql(
         "SELECT name FROM `tabUser` WHERE username is null",
         as_dict=True
     )
