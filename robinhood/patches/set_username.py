@@ -5,7 +5,7 @@ import string
 import random
 
 
-def execute(doc, method=None):
+def execute():
     """Update username."""
     size = 6
     chars = string.ascii_uppercase + string.digits
@@ -20,6 +20,6 @@ def execute(doc, method=None):
         while(frappe.db.get_value("User", {"username": username}, "name")):
             username = ''.join(random.choice(chars) for _ in range(size))
 
-        user_doc.username = username
+        user_doc.username = username.upper()
         user_doc.save()
         frappe.db.commit()
