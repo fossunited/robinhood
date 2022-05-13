@@ -23,7 +23,7 @@
  "is_standard": 1,
  "login_required": 1,
  "max_attachment_size": 0,
- "modified": "2022-04-05 14:02:45.434600",
+ "modified": "2022-05-13 18:40:50.675649",
  "modified_by": "Administrator",
  "module": "Robinhood",
  "name": "profie",
@@ -99,6 +99,18 @@
    "max_value": 0,
    "read_only": 0,
    "reqd": 1,
+   "show_in_filter": 0
+  },
+  {
+   "allow_read_on_all_link_options": 0,
+   "fieldname": "bio",
+   "fieldtype": "Text",
+   "hidden": 0,
+   "label": "Bio",
+   "max_length": 0,
+   "max_value": 0,
+   "read_only": 0,
+   "reqd": 0,
    "show_in_filter": 0
   }
  ]

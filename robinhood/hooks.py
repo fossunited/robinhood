@@ -116,6 +116,9 @@ doc_events = {
     "File": {
         "before_insert": "robinhood.robinhood.doctype.checkin.checkin.image_upsize"
     },
+    "User": {
+        "before_insert": "robinhood.utils.user.username"
+    }
 }
 
 # Scheduled Tasks

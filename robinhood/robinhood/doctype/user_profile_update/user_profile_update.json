@@ -13,7 +13,8 @@
   "phone",
   "mobile_no",
   "city",
-  "profile_picture"
+  "profile_picture",
+  "bio"
  ],
  "fields": [
   {
@@ -51,11 +52,16 @@
    "fieldname": "profile_picture",
    "fieldtype": "Attach Image",
    "label": "Profile Picture"
+  },
+  {
+   "fieldname": "bio",
+   "fieldtype": "Text",
+   "label": "Bio"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-02-03 20:34:30.777546",
+ "modified": "2022-05-13 18:40:22.192779",
  "modified_by": "Administrator",
  "module": "Robinhood",
  "name": "User profile update",

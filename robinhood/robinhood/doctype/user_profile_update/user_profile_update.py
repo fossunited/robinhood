@@ -1,3 +1,4 @@
+"""Update user profile."""
 # Copyright (c) 2021, zerodha and contributors
 # For license information, please see license.txt
 
@@ -6,7 +7,10 @@ from frappe.model.document import Document
 
 
 class Userprofileupdate(Document):
+    """Update profile."""
+
     def on_update(self):
+        """Update user."""
         user = frappe.get_doc("User", frappe.session.user)
         user.first_name = self.first_name
         if self.last_name:
@@ -17,6 +21,8 @@ class Userprofileupdate(Document):
             user.user_image = self.profile_picture
         if self.city:
             user.location = self.city
+        if self.bio:
+            user.bio = self.bio
 
         user.save(ignore_permissions=True)
 
