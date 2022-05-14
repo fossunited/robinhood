@@ -17,14 +17,14 @@
   "docstatus": 0,
   "doctype": "Web Template",
   "fields": [],
-  "modified": "2022-02-03 19:47:01.588389",
+  "modified": "2022-05-14 09:42:02.068968",
   "module": "Robinhood",
   "name": "Heat-Map",
   "parent": null,
   "parentfield": null,
   "parenttype": null,
-  "standard": 1,
-  "template": "",
+  "standard": 0,
+  "template": "<script>\n  console.log(\"wah heat map;...\", Chart);\n</script>\n",
   "type": "Section"
  },
  {
