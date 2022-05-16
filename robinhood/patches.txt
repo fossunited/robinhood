@@ -1,1 +1,1 @@
-robinhood.patches.set_username
+robinhood.patches.set_username_for_all

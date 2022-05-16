@@ -10,7 +10,7 @@ def execute():
     size = 6
     chars = string.ascii_uppercase + string.digits
     userlist = frappe.db.sql(
-        "SELECT name FROM `tabUser` WHERE username is null",
+        "SELECT name FROM `tabUser`",
         as_dict=True
     )
 
