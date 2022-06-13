@@ -202,3 +202,9 @@ fixtures = [
     {"dt": "Web Template", "filters": [["module", "in", ("Robinhood")]]},
     {"dt": "Web Form", "filters": [["module", "in", ("Robinhood")]]},
 ]
+
+
+website_redirects = [
+    # absolute location
+    {"source": "/me", "target": "/r/user"},
+]
