@@ -15,7 +15,7 @@ Once Frappe is installed, add robinhood app to your bench by running
 $ bench get-app https://github.com/fossunited/robinhood.git
 ```
 
-After that, you can install healthcare app on required site by running
+After that, you can install robinhood app on required site by running
 
 ```sh
 $ bench --site demo.com install-app robinhood
