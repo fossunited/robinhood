@@ -18,7 +18,7 @@ $ bench get-app https://github.com/fossunited/robinhood.git
 After that, you can install robinhood app on required site by running
 
 ```sh
-$ bench --site demo.com install-app robinhood
+$ bench --site site1.local install-app robinhood
 ```
 
 <br />
