@@ -150,7 +150,7 @@
   "meta_description": null,
   "meta_image": null,
   "meta_title": null,
-  "modified": "2022-06-14 09:15:10.026129",
+  "modified": "2022-06-14 10:23:15.463804",
   "module": "Robinhood",
   "name": "homepage",
   "page_blocks": [
@@ -165,7 +165,7 @@
     "parentfield": "page_blocks",
     "parenttype": "Web Page",
     "web_template": "Markdown",
-    "web_template_values": "{\"content\":\"<div class=\\\"row\\\">\\n<div class=\\\"col-md-6\\\">Welcome to Robin Hood Army CheckIn! Whilst going for RHA drives, any Robin can self checkin on this platform. \\n<br>\\n<br>\\nGet your Robin badges after checking in\ud83d\udd25:<br>\\n\\n 10 Drives: Robin Ninja<br>\\n\\n100 Drives: Robin Centurion<br><br>\\n\\n\\n<a href=\\\"/checkin?new=1\\\">CheckIn Now!</a><br><br>\\n\\n\\nYou can see what your fellow Robins across the world are upto here:\\n</div>\\n<div class=\\\"col-md-6\\\">\\n<img src=\\\"https://checkin.robinhoodarmy.com/files/6029b1aa4a8be4a.png\\\" alt=\\\"Robin hood army certificate\\\">\\n\\n</div>\\n</div>\\n\\n\\n\\n\",\"align\":\"Left\"}"
+    "web_template_values": "{\"content\":\"<div class=\\\"row\\\">\\n<div class=\\\"col-md-6\\\">Welcome to Robin Hood Army CheckIn! Whilst going for RHA drives, any Robin can self checkin on this platform. \\n<br>\\n<br>\\nGet your Robin badges after checking in\ud83d\udd25:<br>\\n\\n 10 Drives: Robin Ninja<br>\\n\\n100 Drives: Robin Centurion<br><br>\\n\\n\\n<a href=\\\"/checkin\\\">CheckIn Now!</a><br><br>\\n\\n\\nYou can see what your fellow Robins across the world are upto here:\\n</div>\\n<div class=\\\"col-md-6\\\">\\n<img src=\\\"https://checkin.robinhoodarmy.com/files/6029b1aa4a8be4a.png\\\" alt=\\\"Robin hood army certificate\\\">\\n\\n</div>\\n</div>\\n\\n\\n\\n\",\"align\":\"Left\"}"
    },
    {
     "add_bottom_padding": 1,
