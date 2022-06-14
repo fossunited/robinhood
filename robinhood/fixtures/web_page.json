@@ -150,7 +150,7 @@
   "meta_description": null,
   "meta_image": null,
   "meta_title": null,
-  "modified": "2022-02-15 10:33:05.574982",
+  "modified": "2022-06-14 09:15:10.026129",
   "module": "Robinhood",
   "name": "homepage",
   "page_blocks": [
@@ -181,7 +181,7 @@
     "web_template_values": null
    },
    {
-    "add_bottom_padding": 0,
+    "add_bottom_padding": 1,
     "add_container": 1,
     "add_shade": 0,
     "add_top_padding": 0,
