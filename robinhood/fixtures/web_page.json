@@ -397,7 +397,7 @@
   "meta_description": null,
   "meta_image": null,
   "meta_title": null,
-  "modified": "2022-06-13 18:16:30.263038",
+  "modified": "2022-06-26 20:29:00.329949",
   "module": "Robinhood",
   "name": "checkin-robin-hood-army",
   "page_blocks": [
@@ -412,6 +412,32 @@
     "parentfield": "page_blocks",
     "parenttype": "Web Page",
     "web_template": "profile",
+    "web_template_values": null
+   },
+   {
+    "add_bottom_padding": 1,
+    "add_container": 1,
+    "add_shade": 0,
+    "add_top_padding": 1,
+    "css_class": null,
+    "hide_block": 0,
+    "parent": "checkin-robin-hood-army",
+    "parentfield": "page_blocks",
+    "parenttype": "Web Page",
+    "web_template": "user gallery",
+    "web_template_values": null
+   },
+   {
+    "add_bottom_padding": 1,
+    "add_container": 1,
+    "add_shade": 0,
+    "add_top_padding": 1,
+    "css_class": null,
+    "hide_block": 0,
+    "parent": "checkin-robin-hood-army",
+    "parentfield": "page_blocks",
+    "parenttype": "Web Page",
+    "web_template": "robin-checkin-chart",
     "web_template_values": null
    }
   ],
