@@ -23,7 +23,7 @@ def image_upsize(file_doc, method):
     """
     Upsize the uploaded selfies to a standard size.
     """
-    filepath = frappe.utils.get_site_path() + file_doc.file_url
+    filepath = frappe.utils.get_site_path() + "/public" + file_doc.file_url
     image = Image.open(filepath)
 
     image.thumbnail((400, 400))

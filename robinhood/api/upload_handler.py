@@ -16,6 +16,6 @@ def handler(doctype=None, filters=None, debug=False, cache=False):
 
     if filename_hash and filename_ext:
         frappe.form_dict.file_url = f"/files/{filename_hash}.{filename_ext}"
-
+    frappe.form_dict.is_private = "0"
     res = upload_file()
     return res
