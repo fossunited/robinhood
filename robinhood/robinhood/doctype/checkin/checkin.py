@@ -96,7 +96,7 @@ class Checkin(Document):
 
         jinja_data = {
             "robin_name": (
-                frappe.db.get_value("User", {"email": self.owner}, ["first_name"]) or ""
+                frappe.db.get_value("User", {"email": self.owner}, ["full_name"]) or ""
             ).title(),
             "base_url": get_url(),
             "robin_location": frappe.db.get_value(
