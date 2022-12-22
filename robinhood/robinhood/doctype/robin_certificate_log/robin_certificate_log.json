@@ -22,7 +22,7 @@
    "fieldname": "type_of_certificate",
    "fieldtype": "Select",
    "label": "Type of certificate",
-   "options": "10\n50\n100"
+   "options": "1\n10\n50\n100"
   },
   {
    "fieldname": "certificate_id",
