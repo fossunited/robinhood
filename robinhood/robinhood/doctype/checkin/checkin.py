@@ -107,7 +107,9 @@ class Checkin(Document):
         }
 
         certificate_filename = None
-        if checkin_count == 10:
+        if checkin_count == 1:
+            certificate_filename = "cadet.html"
+        elif checkin_count == 10:
             certificate_filename = "ninja.html"
         elif checkin_count == 50:
             certificate_filename = "gladiator.html"            
