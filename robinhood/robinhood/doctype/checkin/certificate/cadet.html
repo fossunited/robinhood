@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <style>
+      @font-face {
+        font-family: "myriad-pro";
+        src: url("{{base_url}}/assets/robinhood/fonts/myriad_pro_regular.ttf");
+        font-weight: "bold";
+      }
+      * {
+        font-family: "myriad-pro";
+      }
+
+    </style>
+  </head>
+  <body style="height:1020px;margin: 0; padding: 0;display:flex;flex:1">
+    <div
+        style="
+        display: -webkit-box;
+        display: flex;
+        flex: 1;
+        -webkit-flex: 1;
+        -webkit-box-flex: 1;
+        position: absolute; top: 0; left: 0; height: 100%; width: 100%;
+      "
+    >
+        <div
+        style="
+            width:37%;
+            display: flex;
+        "
+        >
+        <img
+          src="{{base_url}}/assets/robinhood/images/cadet.png"
+          style="position: absolute; width: 720px; height:101%;top: -10px; left: 0;bottom:0;right:0"
+        />
+
+
+        </div>
+
+        <div style="width:63%;padding-top:10px">
+        <div style="margin-left: 230px">
+          <div>
+            <p style="font-size: 50px">Congratulations</p>
+            <p style="font-size: 75px; margin-top: -24px; font-weight: bold">
+              {{robin_name}}
+            </p>
+            <p style="color: #666666; font-size: 38px; margin-top: -35px">
+              From {{robin_location}}
+            </p>
+          </div>
+          <div style="margin-top: 45px">
+            <p style="font-size: 50px">on completing your</p>
+            <p
+              style="
+                font-size: 75px;
+                font-weight: bold;
+                margin-top: -28px;
+                font-weight: bold;
+              "
+            >
+              first drive
+            </p>
+          </div>
+        </div>
+        <hr
+          style="
+            background-color: #165f30;
+            margin-top: 135px;
+            height:2px
+          "
+        />
+        <div style="margin-left: 230px; padding-top: 20px">
+          <p style="font-size: 38px; color: #222222">Issued on</p>
+          <p style="font-size: 50px; font-weight: bold; margin-top: -16px">
+            {{certificate_date}}
+          </p>
+           <p style="font-size: 22px; color: #666666; margin-top: -16px">
+            {{certificate_id}}
+          </p>
+        </div>
+      </div>
+    </div>
+
+        </div>
+    </div>
+  </body>
+</html>
