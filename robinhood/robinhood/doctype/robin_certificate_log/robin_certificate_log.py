@@ -18,8 +18,8 @@ class RobinCertificateLog(Document):
             c.generate_certificate(int(self.type_of_certificate))
 
 
-@frappe.whitelist(allow_guest=True)
-def download_certificate():
+@frappe.whitelist()
+def download_certificate(certificate_type):
     """
     Send certificates base64 of a particular logged in user
     """
@@ -27,10 +27,13 @@ def download_certificate():
     certificates = frappe.get_list(
         "Robin Certificate Log",
         fields=["date_of_issue", "certificate_id", "type_of_certificate"],
-        filters=[["robin", "=", owner], ["certificate_id", "!=", None]],
+        filters=[["robin", "=", owner], ["certificate_id", "!=", ""], ["type_of_certificate", "=", certificate_type]],
     )
-    resp = {10: None, 50: None, 100: None}
-    for certificate in certificates:
+    resp = {
+        "message": f"Certificate sent to your email {owner}"
+    }
+    if certificates:
+        certificate = certificates[0]
         jinja_data = {
             "robin_name": (
                 frappe.db.get_value("User", {"email": owner}, ["full_name"]) or ""
@@ -42,36 +45,40 @@ def download_certificate():
             "certificate_date": certificate["date_of_issue"],
             "certificate_id": certificate["certificate_id"],
         }
-        certificate_filename = None
-        if int(certificate["type_of_certificate"]) == 10:
-            certificate_filename = "ninja.html"
-        elif int(certificate["type_of_certificate"]) == 50:
-            certificate_filename = "gladiator.html"            
-        elif int(certificate["type_of_certificate"]) == 100:
-            certificate_filename = "centurion.html"
+        certificate_meta = frappe.db.get_value(
+            "Certificate",
+            filters={"number_of_checkins": int(certificate_type)},
+            fieldname=["certificate_name", "html"],
+            as_dict=True, cache=True
+        )
 
-        with open(
-            frappe.get_app_path(
-                "robinhood",
-                "robinhood",
-                "doctype",
-                "checkin",
-                "certificate",
-                certificate_filename,
-            )
-        ) as htmlfile:
-            html_str = htmlfile.read()
-            filecontent = pdfkit.from_string(
-                Template(html_str).render(**jinja_data),
-                None,
-                options={
-                    "margin-top": "0",
-                    "margin-bottom": "0",
-                    "margin-left": "0",
-                    "margin-right": "0",
-                    "page-size": "Legal",
-                    "orientation": "Landscape",
-                },
-            )
-        resp[int(certificate["type_of_certificate"])] = filecontent
+        filecontent = pdfkit.from_string(
+            Template(certificate_meta.html).render(**jinja_data),
+            None,
+            options={
+                "margin-top": "0",
+                "margin-bottom": "0",
+                "margin-left": "0",
+                "margin-right": "0",
+                "page-size": "Legal",
+                "orientation": "Landscape",
+            },
+        )
+        filename = f"{owner}_certificate.pdf"
+        certificate_pdf = {
+                "fname": filename,
+                "fcontent": filecontent,
+            }
+
+        frappe.sendmail(
+            recipients=[owner],
+            bcc=['info@robinhoodarmy.com'],
+            subject="Congratulations! You won a certificate in recognition to your work",
+            message="Congratulations! You won a certificate in recognition to your work",
+            attachments=[certificate_pdf],
+            delayed=False,
+        )
+    else:
+        resp['message'] = "Certificate not generated"
+
     return resp

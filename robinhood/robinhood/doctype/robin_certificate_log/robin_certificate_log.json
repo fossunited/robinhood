@@ -22,7 +22,7 @@
    "fieldname": "type_of_certificate",
    "fieldtype": "Select",
    "label": "Type of certificate",
-   "options": "10\n50\n100"
+   "options": "\n1\n10\n50\n100"
   },
   {
    "fieldname": "certificate_id",
@@ -39,7 +39,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-02-28 11:01:00.535626",
+ "modified": "2022-12-23 14:26:29.644121",
  "modified_by": "Administrator",
  "module": "Robinhood",
  "name": "Robin Certificate Log",

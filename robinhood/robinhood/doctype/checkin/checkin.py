@@ -106,27 +106,16 @@ class Checkin(Document):
             "certificate_id": certificate_id,
         }
 
-        certificate_filename = None
-        if checkin_count == 10:
-            certificate_filename = "ninja.html"
-        elif checkin_count == 50:
-            certificate_filename = "gladiator.html"            
-        elif checkin_count == 100:
-            certificate_filename = "centurion.html"
+        certificate = frappe.db.get_value(
+            "Certificate",
+            filters={"number_of_checkins": checkin_count},
+            fieldname=["certificate_name", "html"],
+            as_dict=True, cache=True
+        )
 
-        with open(
-            frappe.get_app_path(
-                "robinhood",
-                "robinhood",
-                "doctype",
-                "checkin",
-                "certificate",
-                certificate_filename,
-            )
-        ) as htmlfile:
-            html_str = htmlfile.read()
+        if certificate:
             filecontent = pdfkit.from_string(
-                Template(html_str).render(**jinja_data),
+                Template(certificate.html).render(**jinja_data),
                 None,
                 options={
                     "margin-top": "0",
@@ -162,8 +151,7 @@ class Checkin(Document):
             [self.owner],
             as_dict=True,
         )
-        if res and res[0]["count"] in [10, 50, 100]:
-            enqueue(self.generate_certificate, checkin_count=res[0]["count"])
+        enqueue(self.generate_certificate, checkin_count=res[0]["count"])
 
     def on_update(self):
         self.image_downsize()
