@@ -164,7 +164,7 @@ class Checkin(Document):
             [self.owner],
             as_dict=True,
         )
-        if res and res[0]["count"] in [10, 50, 100]:
+        if res and res[0]["count"] in [1, 10, 50, 100]:
             enqueue(self.generate_certificate, checkin_count=res[0]["count"])
 
     def on_update(self):
