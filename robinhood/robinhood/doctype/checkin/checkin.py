@@ -147,8 +147,8 @@ class Checkin(Document):
             frappe.sendmail(
                 recipients=[self.owner],
                 bcc=['info@robinhoodarmy.com'],
-                subject="Congratulations! You won a certificate in recognition to your work",
-                message="Congratulations! You won a certificate in recognition to your work",
+                subject="Congratulations! You have received a certificate in recognition to your work",
+                message="Congratulations! You have received a certificate in recognition to your work",
                 attachments=[certificate_pdf],
                 delayed=False,
             )
