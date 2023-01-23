@@ -29,7 +29,7 @@ def download_certificate():
         fields=["date_of_issue", "certificate_id", "type_of_certificate"],
         filters=[["robin", "=", owner], ["certificate_id", "!=", None]],
     )
-    resp = {10: None, 50: None, 100: None}
+    resp = {1: None, 10: None, 50: None, 100: None}
     for certificate in certificates:
         jinja_data = {
             "robin_name": (
@@ -43,7 +43,9 @@ def download_certificate():
             "certificate_id": certificate["certificate_id"],
         }
         certificate_filename = None
-        if int(certificate["type_of_certificate"]) == 10:
+        if int(certificate["type_of_certificate"]) == 1:
+            certificate_filename = "cadet.html"
+        elif int(certificate["type_of_certificate"]) == 10:
             certificate_filename = "ninja.html"
         elif int(certificate["type_of_certificate"]) == 50:
             certificate_filename = "gladiator.html"            

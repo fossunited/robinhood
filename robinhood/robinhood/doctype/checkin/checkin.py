@@ -107,7 +107,9 @@ class Checkin(Document):
         }
 
         certificate_filename = None
-        if checkin_count == 10:
+        if checkin_count == 1:
+            certificate_filename = "cadet.html"
+        elif checkin_count == 10:
             certificate_filename = "ninja.html"
         elif checkin_count == 50:
             certificate_filename = "gladiator.html"            
@@ -145,8 +147,8 @@ class Checkin(Document):
             frappe.sendmail(
                 recipients=[self.owner],
                 bcc=['info@robinhoodarmy.com'],
-                subject="Congratulations! You won a certificate in recognition to your work",
-                message="Congratulations! You won a certificate in recognition to your work",
+                subject="Congratulations! You have received a certificate in recognition to your work",
+                message="Congratulations! You have received a certificate in recognition to your work",
                 attachments=[certificate_pdf],
                 delayed=False,
             )
@@ -162,7 +164,7 @@ class Checkin(Document):
             [self.owner],
             as_dict=True,
         )
-        if res and res[0]["count"] in [10, 50, 100]:
+        if res and res[0]["count"] in [1, 10, 50, 100]:
             enqueue(self.generate_certificate, checkin_count=res[0]["count"])
 
     def on_update(self):
