@@ -27,7 +27,7 @@ def download_certificate():
     certificates = frappe.get_list(
         "Robin Certificate Log",
         fields=["date_of_issue", "certificate_id", "type_of_certificate"],
-        filters=[["robin", "=", owner], ["certificate_id", "!=", None]],
+        filters=[["robin", "=", owner], ["certificate_id", "!=", ""]],
     )
     resp = {1: None, 10: None, 50: None, 100: None}
     for certificate in certificates:
