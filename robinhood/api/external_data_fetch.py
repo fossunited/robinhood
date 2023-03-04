@@ -18,4 +18,4 @@ def fetch_weekly_food_stats():
 
 @frappe.whitelist(allow_guest=True)
 def facebook_share(link):
-    requests.get(url='https://www.facebook.com/dialog/feed?app_id=1077099302859935&display=popup&link='+ urllib.parse.quote(link) +'&redirect_uri=https://developers.facebook.com/tools/explorer')
+    requests.get(url='https://www.facebook.com/dialog/feed?app_id=1077099302859935&display=popup&link='+ urllib.parse.quote(link, safe='') +'&redirect_uri=https://developers.facebook.com/tools/explorer')
