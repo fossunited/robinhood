@@ -1,8 +1,10 @@
 from PIL import Image, ImageDraw, ImageFont, ImageOps
 import requests
 import io
+import frappe
 from image_edit_helper import put_border_radius, create_gradient_image, get_badge_details, get_count_decorated
 
+@frappe.whitelist(allow_guest=True)
 def frameShareImageAsset (img_id, drive_count):
     # Set global variables values
     # Define the colors for the gradient
