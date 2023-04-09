@@ -8,7 +8,7 @@ def frameShareImageAsset (img_id, drive_count):
     # Define the colors for the gradient
     color1 = (0, 100, 40)
     color2 = (0, 71, 77)
-    font_family = "static/fonts/Inter/static/Inter-ExtraBold.ttf"
+    font_family = "../../public/fonts/Inter-ExtraBold.ttf"
     padding = 80
     margin = 30
     border_radius = 15
