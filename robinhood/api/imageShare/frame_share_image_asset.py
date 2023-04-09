@@ -9,7 +9,7 @@ def frameShareImageAsset (img_id, drive_count):
     # Define the colors for the gradient
     color1 = (0, 100, 40)
     color2 = (0, 71, 77)
-    font_family = "../../public/fonts/Inter-ExtraBold.ttf"
+    font_family = "robinhood\public\fonts\Inter-ExtraBold.ttf"
     padding = 80
     margin = 30
     border_radius = 15
@@ -19,7 +19,7 @@ def frameShareImageAsset (img_id, drive_count):
 
     # ~~~~~~~~ Drive details ~~~~~~~~~~~~~~~~~~~~~
     # get the drive image
-    image_response = requests.get('https://checkin.robinhoodarmy.com/files/' + img_id + '.jpg')
+    image_response = requests.get('https://checkin.robinhoodarmy.com' + img_id )
     user_image = Image.open(io.BytesIO(image_response.content))
     image = user_image
     # get badge_text and badge image path based on drive count
