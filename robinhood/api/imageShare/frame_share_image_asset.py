@@ -9,20 +9,21 @@ def frameShareImageAsset (img_id, drive_count):
     # Define the colors for the gradient
     color1 = (0, 100, 40)
     color2 = (0, 71, 77)
-    font_family = "robinhood\public\fonts\Inter-ExtraBold.ttf"
+    font_family = "robinhood\public\\fonts\Inter-ExtraBold.ttf"
     padding = 80
     margin = 30
     border_radius = 15
     container_size = (400, 700)
     container_width, container_height = container_size
     used_height = 0
-
+    
     # ~~~~~~~~ Drive details ~~~~~~~~~~~~~~~~~~~~~
     # get the drive image
     image_response = requests.get('https://checkin.robinhoodarmy.com' + img_id )
     user_image = Image.open(io.BytesIO(image_response.content))
     image = user_image
     # get badge_text and badge image path based on drive count
+    drive_count = int(drive_count)
     badge_text, badge_img_path = get_badge_details(drive_count)
     # ~~~~~~~~ End: Drive details ~~~~~~~~~~~~~~~~~~~~~
 
@@ -32,7 +33,7 @@ def frameShareImageAsset (img_id, drive_count):
 
     # ~~~~~~~~~~ logo image ~~~~~~~~~~~~
     # Put the logo image
-    rha_logo_img = Image.open("../../public/images/rha-logo.png")
+    rha_logo_img = Image.open("robinhood\public\images\\rha-logo.png")
     # resize the logo image
     new_size = tuple(dim - padding*2.2 for dim in container_size)
     # new_size = tuple(dim // 1.6 for dim in container_size)
@@ -64,7 +65,7 @@ def frameShareImageAsset (img_id, drive_count):
 
 
     # ~~~~~~~~~~ Badge image ~~~~~~~~~~~~
-    badge_image = Image.open(f"../../public/badges/{badge_img_path}.png")
+    badge_image = Image.open(f"robinhood\public\\badges\\{badge_img_path}.png")
     # resize the badge_image
     new_size = tuple(dim // 4 for dim in image.size)
     badge_image.thumbnail(new_size)
@@ -107,7 +108,7 @@ def frameShareImageAsset (img_id, drive_count):
     # ~~~~~~~~~~ end Text: drive_count text ~~~~~~~~~~~~
 
     # ~~~~~~ url box ~~~~~~
-    rha_url_img = Image.open("../../public/banner/website-url.png")
+    rha_url_img = Image.open("robinhood\public\\banner\website-url.png")
     # resize the url image
     new_size = tuple(dim - padding-margin for dim in container_size)
     rha_url_img.thumbnail(new_size)
