@@ -1,4 +1,3 @@
-from flask import send_file
 from PIL import Image, ImageDraw, ImageFont, ImageOps
 import requests
 import io
@@ -10,7 +9,7 @@ def frameShareImageAsset (img_id, drive_count):
     # Define the colors for the gradient
     color1 = (0, 100, 40)
     color2 = (0, 71, 77)
-    font_family = "frappe-bench\sites\\assets\\robinhood\public\\fonts\Inter-ExtraBold.ttf"
+    font_family = "robinhood\public\\fonts\Inter-ExtraBold.ttf"
     padding = 80
     margin = 30
     border_radius = 15
@@ -124,7 +123,7 @@ def frameShareImageAsset (img_id, drive_count):
 
 
     # save the image
-    return send_file(io.BytesIO(container),download_name='shareAsset.png',mimetype='image/png')
+    return container
 
 # create_gradient_image
 def create_gradient_image(container_size, color1, color2):
