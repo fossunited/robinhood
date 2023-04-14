@@ -33,7 +33,7 @@ def frameShareImageAsset (img_id, drive_count):
 
     # ~~~~~~~~~~ logo image ~~~~~~~~~~~~
     # Put the logo image
-    rha_logo_img = Image.open("robinhood\public\images\\rha-logo.png")
+    rha_logo_img = Image.open("frappe-bench\sites\\assets\\robinhood\public\images\\rha-logo.png")
     # resize the logo image
     new_size = tuple(dim - padding*2.2 for dim in container_size)
     # new_size = tuple(dim // 1.6 for dim in container_size)
@@ -65,7 +65,7 @@ def frameShareImageAsset (img_id, drive_count):
 
 
     # ~~~~~~~~~~ Badge image ~~~~~~~~~~~~
-    badge_image = Image.open(f"robinhood\public\\badges\\{badge_img_path}.png")
+    badge_image = Image.open(f"frappe-bench\sites\\assets\\robinhood\public\\badges\\{badge_img_path}.png")
     # resize the badge_image
     new_size = tuple(dim // 4 for dim in image.size)
     badge_image.thumbnail(new_size)
@@ -108,7 +108,7 @@ def frameShareImageAsset (img_id, drive_count):
     # ~~~~~~~~~~ end Text: drive_count text ~~~~~~~~~~~~
 
     # ~~~~~~ url box ~~~~~~
-    rha_url_img = Image.open("robinhood\public\\banner\website-url.png")
+    rha_url_img = Image.open("frappe-bench\sites\\assets\\robinhood\public\\banner\website-url.png")
     # resize the url image
     new_size = tuple(dim - padding-margin for dim in container_size)
     rha_url_img.thumbnail(new_size)
