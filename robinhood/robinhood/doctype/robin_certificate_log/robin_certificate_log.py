@@ -77,3 +77,75 @@ def download_certificate():
             )
         resp[int(certificate["type_of_certificate"])] = filecontent
     return resp
+
+
+@frappe.whitelist(allow_guest=True)
+def download_latest_certificate():
+    """
+    Send certificates base64 of a particular logged in user
+    """
+    owner = frappe.session.user
+    certificates = frappe.get_list(
+        "Robin Certificate Log",
+        fields=["date_of_issue", "certificate_id", "type_of_certificate"],
+        filters=[["robin", "=", owner], ["certificate_id", "!=", ""]],
+    )
+    resp = {None}
+
+    cert_count = len(certificates)
+    latest_cert = 0
+    for certificate in certificates:
+        if int(certificate["type_of_certificate"]) > latest_cert:
+            latest_cert = int(certificate["type_of_certificate"])
+
+    if cert_count == 0:
+        return resp
+    else:
+        for certificate in certificates:
+            if int(certificate["type_of_certificate"]) == latest_cert:
+                jinja_data = {
+                    "robin_name": (
+                        frappe.db.get_value("User", {"email": owner}, ["full_name"]) or ""
+                    ).title(),
+                    "base_url": get_url(),
+                    "robin_location": frappe.db.get_value(
+                        "Robin Chapter Mapping", {"user": owner}, ["chapter"]
+                    ),
+                    "certificate_date": certificate["date_of_issue"],
+                    "certificate_id": certificate["certificate_id"],
+                }
+                certificate_filename = None
+                if latest_cert == 1:
+                    certificate_filename = "cadet.html"
+                elif latest_cert == 10:
+                    certificate_filename = "ninja.html"
+                elif latest_cert == 50:
+                    certificate_filename = "gladiator.html"            
+                elif latest_cert == 100:
+                    certificate_filename = "centurion.html"
+
+                with open(
+                    frappe.get_app_path(
+                        "robinhood",
+                        "robinhood",
+                        "doctype",
+                        "checkin",
+                        "certificate",
+                        certificate_filename,
+                    )
+                ) as htmlfile:
+                    html_str = htmlfile.read()
+                    filecontent = pdfkit.from_string(
+                        Template(html_str).render(**jinja_data),
+                        None,
+                        options={
+                            "margin-top": "0",
+                            "margin-bottom": "0",
+                            "margin-left": "0",
+                            "margin-right": "0",
+                            "page-size": "Legal",
+                            "orientation": "Landscape",
+                        },
+                    )
+                resp = {filecontent}
+    return resp
