@@ -124,10 +124,12 @@ def frameShareImageAsset (img_id, drive_count):
     container.paste(rha_url_img, (x, y))
     used_height = y + url_height
     # ~~~~~~ end: url box ~~~~~~
-
-
-    # save the image
-    return container
+    
+    container_byte_arr = io.BytesIO()
+    container.save(container_byte_arr, format='JPEG')
+    container_byte_arr.seek(0)
+    # return the image as a response
+    return send_file(container_byte_arr, mimetype='image/jpeg')
 
 # create_gradient_image
 def create_gradient_image(container_size, color1, color2):
