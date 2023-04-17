@@ -133,8 +133,8 @@ def frameShareImageAsset (img_id, drive_count):
 
     frappe.response.filename = 'MyLatestCheckin.jpg'
     frappe.response.filecontent = container_byte_arr.getvalue()
-    frappe.response.type = "binary"
-    #frappe.response.display_content_as = "attachment"
+    frappe.response.type = "download"
+    frappe.response.display_content_as = "inline"
 
 # create_gradient_image
 def create_gradient_image(container_size, color1, color2):
