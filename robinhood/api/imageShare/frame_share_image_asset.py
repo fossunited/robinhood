@@ -1,7 +1,6 @@
 from PIL import Image, ImageDraw, ImageFont, ImageOps
 import requests
 from urllib.request import urlopen
-from flask import send_file
 import io
 import frappe
 
@@ -128,9 +127,14 @@ def frameShareImageAsset (img_id, drive_count):
     
     container_byte_arr = io.BytesIO()
     container.save(container_byte_arr, format='JPEG')
-    container_byte_arr.seek(0)
+    # container_byte_arr.seek(0)
     # return the image as a response
-    return send_file(container_byte_arr, mimetype='image/jpeg')
+    # return send_file(container_byte_arr, mimetype='image/jpeg')
+
+    frappe.response.filename = 'MyLatestCheckin.jpg'
+    frappe.response.filecontent = container_byte_arr.getvalue()
+    frappe.response.type = "binary"
+    #frappe.response.display_content_as = "attachment"
 
 # create_gradient_image
 def create_gradient_image(container_size, color1, color2):
