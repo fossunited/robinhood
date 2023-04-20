@@ -11,10 +11,10 @@ def frameShareImageAsset (img_id, drive_count):
     color1 = (0, 100, 40)
     color2 = (0, 71, 77)
     font_family_url = 'https://checkin.robinhoodarmy.com/assets/robinhood/fonts/Inter-ExtraBold.ttf'
-    padding = 80
-    margin = 30
-    border_radius = 15
-    container_size = (400, 700)
+    padding = 160
+    margin = 60
+    border_radius = 30
+    container_size = (800, 1400)
     container_width, container_height = container_size
     used_height = 0
     
@@ -52,9 +52,9 @@ def frameShareImageAsset (img_id, drive_count):
     # ~~~~~~~~~~ image ~~~~~~~~~~~~
     # Crop the image
     # Define crop dimensions
-    crop_width, crop_height = 310, 325
+    crop_width, crop_height = 620, 650
     image = ImageOps.fit(image, (crop_width, crop_height), Image.ANTIALIAS)
-    border_radius = 40
+    border_radius = 80
     image = put_border_radius(image, border_radius)
 
     # paste image in container at the center
@@ -84,7 +84,7 @@ def frameShareImageAsset (img_id, drive_count):
     # Add text to the container using the ImageDraw module
     draw = ImageDraw.Draw(container)
     text = f"I'M A ROBIN {badge_text.upper()}"
-    font = ImageFont.truetype(urlopen(font_family_url), 15)
+    font = ImageFont.truetype(urlopen(font_family_url), 30)
     # get text box size
     text_box = draw.textbbox((0, 0), text, font=font)
     text_width, text_height = (
@@ -99,7 +99,7 @@ def frameShareImageAsset (img_id, drive_count):
     draw = ImageDraw.Draw(container)
     drive_count_decorated = get_count_decorated(drive_count)
     text = f"I just checked-in to my \n {drive_count_decorated} drive with RHA!"
-    font = ImageFont.truetype(urlopen(font_family_url), 30)
+    font = ImageFont.truetype(urlopen(font_family_url), 60)
     # get text box size
     text_box = draw.textbbox((0, 0), text, font=font)
     text_width, text_height = (
