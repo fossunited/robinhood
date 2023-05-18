@@ -103,7 +103,7 @@ def frameShareImageAsset (img_id, drive_count, full_name):
     # get text box size
     text_box = draw.textbbox((0, 0), text, font=font)
     text_width, text_height = (
-                                      text_box[2] - text_box[0]), (text_box[3] - text_box[1])
+        text_box[2] - text_box[0]), (text_box[3] - text_box[1])
     x = (container.width - text_width) / 2
     y = int(used_height + margin*0.5)
     draw.text((x, y), text, font=font, fill=(30, 228, 179), align='center')
