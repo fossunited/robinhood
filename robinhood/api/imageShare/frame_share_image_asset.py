@@ -5,7 +5,7 @@ import io
 import frappe
 
 @frappe.whitelist()
-def frameShareImageAsset (img_id, drive_count):
+def frameShareImageAsset (img_id, drive_count, full_name):
     # Set global variables values
     # Define the colors for the gradient
     color1 = (0, 100, 40)
@@ -14,7 +14,7 @@ def frameShareImageAsset (img_id, drive_count):
     padding = 160
     margin = 60
     border_radius = 30
-    container_size = (800, 1400)
+    container_size = (800, 1450)
     container_width, container_height = container_size
     used_height = 0
     
@@ -80,15 +80,30 @@ def frameShareImageAsset (img_id, drive_count):
     used_height = y + image_height
     # ~~~~~~~~~~ end: Badge image ~~~~~~~~~~~~
 
-    # ~~~~~~~~~~ Text: badge text ~~~~~~~~~~~~
+    # ~~~~~~~~~~ Text: name text ~~~~~~~~~~~~
     # Add text to the container using the ImageDraw module
     draw = ImageDraw.Draw(container)
-    text = f"I'M A ROBIN {badge_text.upper()}"
-    font = ImageFont.truetype(urlopen(font_family_url), 30)
+    text = f"{full_name.upper()}"
+    font = ImageFont.truetype(urlopen(font_family_url), 40)
     # get text box size
     text_box = draw.textbbox((0, 0), text, font=font)
     text_width, text_height = (
         text_box[2] - text_box[0]), (text_box[3] - text_box[1])
+    x = (container.width - text_width) / 2
+    y = int(used_height + margin*0.5)
+    draw.text((x, y), text, font=font, fill=(30, 228, 179), align='center')
+    used_height = y + text_height
+    # ~~~~~~~~~~ end Text: name text ~~~~~~~~~~~~
+
+    # ~~~~~~~~~~ Text: badge text ~~~~~~~~~~~~
+    # Add text to the container using the ImageDraw module
+    draw = ImageDraw.Draw(container)
+    text = f"ROBIN {badge_text.upper()}"
+    font = ImageFont.truetype(urlopen(font_family_url), 30)
+    # get text box size
+    text_box = draw.textbbox((0, 0), text, font=font)
+    text_width, text_height = (
+                                      text_box[2] - text_box[0]), (text_box[3] - text_box[1])
     x = (container.width - text_width) / 2
     y = int(used_height + margin*0.5)
     draw.text((x, y), text, font=font, fill=(30, 228, 179), align='center')
@@ -208,12 +223,12 @@ def get_badge_details(drive_count):
 # get_count_decorated
 def get_count_decorated(drive_count):
     count_decorated = ""
-    if(drive_count == 1):
-        count_decorated = "1ˢᵗ"
-    elif(drive_count == 2):
-        count_decorated = "2ⁿᵈ"
-    elif(drive_count == 3):
-        count_decorated = "3ʳᵈ"
+    if(drive_count%10 == 1 and drive_count%100 != 11):
+        count_decorated = f"{drive_count}ˢᵗ"
+    elif(drive_count%10 == 2 and drive_count%100 != 12):
+        count_decorated = f"{drive_count}ⁿᵈ"
+    elif(drive_count%10 == 3 and drive_count%100 != 13):
+        count_decorated = f"{drive_count}ʳᵈ"
     else:
         count_decorated = f"{drive_count}ᵗʰ"
 
