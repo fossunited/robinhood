@@ -157,7 +157,7 @@ class Checkin(Document):
         res = frappe.db.sql(
             """
         SELECT COUNT(*) AS count
-        FROM `tabCheckin`
+        FROM `AllCheckins`
         WHERE owner=%s
         GROUP BY owner
         """,
