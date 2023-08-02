@@ -36,11 +36,13 @@ def frameShareImageAsset (img_id, drive_count, full_name, village_served=False):
     # Put the logo image
     if village_served:
         rha_logo_response = requests.get('https://checkin.robinhoodarmy.com/assets/robinhood/images/missionSwades.png')
+        multiplier = 1
     else:
         rha_logo_response = requests.get('https://checkin.robinhoodarmy.com/assets/robinhood/images/rha-logo.png')
+        multiplier = 2.2
     rha_logo_img = Image.open(io.BytesIO(rha_logo_response.content))
     # resize the logo image
-    new_size = tuple(dim - padding*2.2 for dim in container_size)
+    new_size = tuple(dim - padding*multiplier for dim in container_size)
     # new_size = tuple(dim // 1.6 for dim in container_size)
     rha_logo_img.thumbnail(new_size)
 
