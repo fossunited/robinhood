@@ -5,7 +5,7 @@ import io
 import frappe
 
 @frappe.whitelist()
-def frameShareImageAsset (img_id, drive_count, full_name):
+def frameShareImageAsset (img_id, drive_count, full_name, village_served=False):
     # Set global variables values
     # Define the colors for the gradient
     color1 = (0, 100, 40)
@@ -34,7 +34,10 @@ def frameShareImageAsset (img_id, drive_count, full_name):
 
     # ~~~~~~~~~~ logo image ~~~~~~~~~~~~
     # Put the logo image
-    rha_logo_response = requests.get('https://checkin.robinhoodarmy.com/assets/robinhood/images/rha-logo.png' )
+    if village_served:
+        rha_logo_response = requests.get('https://checkin.robinhoodarmy.com/assets/robinhood/images/missionSwades.png')
+    else:
+        rha_logo_response = requests.get('https://checkin.robinhoodarmy.com/assets/robinhood/images/rha-logo.png')
     rha_logo_img = Image.open(io.BytesIO(rha_logo_response.content))
     # resize the logo image
     new_size = tuple(dim - padding*2.2 for dim in container_size)
