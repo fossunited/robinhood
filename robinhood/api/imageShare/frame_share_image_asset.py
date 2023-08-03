@@ -5,7 +5,7 @@ import io
 import frappe
 
 @frappe.whitelist()
-def frameShareImageAsset (img_id, drive_count, full_name, village_served=False):
+def frameShareImageAsset (img_id, drive_count, full_name, village_served):
     # Set global variables values
     # Define the colors for the gradient
     color1 = (0, 100, 40)
@@ -14,7 +14,10 @@ def frameShareImageAsset (img_id, drive_count, full_name, village_served=False):
     padding = 160
     margin = 60
     border_radius = 30
-    container_size = (800, 1450)
+    buffer_height = 0
+    if village_served:
+        buffer_height = 150
+    container_size = (800, 1450+buffer_height)
     container_width, container_height = container_size
     used_height = 0
     
@@ -118,7 +121,10 @@ def frameShareImageAsset (img_id, drive_count, full_name, village_served=False):
     # ~~~~~~~~~~ Text: drive_count text ~~~~~~~~~~~~
     draw = ImageDraw.Draw(container)
     drive_count_decorated = get_count_decorated(drive_count)
-    text = f"I just checked-in to my \n {drive_count_decorated} drive with RHA!"
+    if village_served:
+        text = f"I just checked-in from \n {village_served} to my \n {drive_count_decorated} drive with RHA!"
+    else:
+        text = f"I just checked-in to my \n {drive_count_decorated} drive with RHA!"
     font = ImageFont.truetype(urlopen(font_family_url), 60)
     # get text box size
     text_box = draw.textbbox((0, 0), text, font=font)
