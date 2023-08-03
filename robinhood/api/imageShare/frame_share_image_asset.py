@@ -5,7 +5,7 @@ import io
 import frappe
 
 @frappe.whitelist()
-def frameShareImageAsset (img_id, drive_count, full_name, village_served):
+def frameShareImageAsset (img_id, drive_count, full_name, village_served=''):
     # Set global variables values
     # Define the colors for the gradient
     color1 = (0, 100, 40)
