@@ -127,9 +127,10 @@ class Checkin(Document):
             )
         ) as htmlfile:
             html_str = htmlfile.read()
+            filename = f"{self.owner}_certificate.pdf"
             filecontent = pdfkit.from_string(
                 Template(html_str).render(**jinja_data),
-                None,
+                filename,
                 options={
                     "margin-top": "0",
                     "margin-bottom": "0",
@@ -139,7 +140,6 @@ class Checkin(Document):
                     "orientation": "Landscape",
                 },
             )
-            filename = f"{self.owner}_certificate.pdf"
             certificate_pdf = {
                 "fname": filename,
                 "fcontent": filecontent,
